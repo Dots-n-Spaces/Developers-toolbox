@@ -3,7 +3,7 @@ Toolbox of software design pattern, algorithms and typical problems
 
 # Creational
 ## 💍 Singleton
-Ensures a class has only one instance, and provides a global point of access to it. Use cases: provide a unified access point to a resource or service that’s shared across an app/service, like an audio channel to play sound effects or a network manager to make HTTP requests.
+Ensures a class has only one instance and provides a global point of access to it. Use cases: provide a unified access point to a resource or service that’s shared across an app/service, like an audio channel to play sound effects or a network manager to make HTTP requests.
 
 <details>
 
