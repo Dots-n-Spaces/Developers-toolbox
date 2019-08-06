@@ -53,6 +53,8 @@ Singleton.playground:8:13: note: 'init()' declared here
 
 ### TypeScript
 **Example:**
+[jsfiddle link](https://jsfiddle.net/6ekmdvn1/)
+
 ```typescript
 namespace SingletonPattern {
     export class Singleton {
