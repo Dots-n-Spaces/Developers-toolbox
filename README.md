@@ -2,6 +2,186 @@
 Toolbox of software design pattern, algorithms and typical problems
 
 # Creational
+## 🏭 Factory Method
+The factory pattern is used to replace class constructors, abstracting the process of object generation so that the type of the object instantiated can be determined at run-time.
+
+Wikipedia says
+> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+
+<details>
+	
+Real world example
+> Consider the case of currency creation. Where we want to create a currency object depending on the country.
+
+
+### Swift
+
+**Example:**
+```swift
+enum Country {
+    case italy, spain, denmark, ukraine, usa
+}
+
+protocol Currency {
+    func getFlag() -> String
+    func getSymbol() -> String
+}
+
+// Defining currencies based on protocol
+class Euro: Currency {
+    func getFlag() -> String {
+        return "🇪🇺"
+    }
+
+    func getSymbol() -> String {
+        return "€"
+    }
+}
+
+class Krona: Currency {
+    func getFlag() -> String {
+        return "🇩🇰"
+    }
+
+    func getSymbol() -> String {
+        return "DKK"
+    }
+}
+
+class Hryvnia: Currency {
+    func getFlag() -> String {
+        return "🇺🇦"
+    }
+
+    func getSymbol() -> String {
+        return "₴"
+    }
+}
+
+class Dollar: Currency {
+    func getFlag() -> String {
+        return "🇺🇸"
+    }
+
+    func getSymbol() -> String {
+        return "$"
+    }
+}
+
+// Defining factory itself
+class CurrencyFactory {
+    static func make(currencyFor country: Country) -> Currency {
+        switch country {
+        case .spain, .italy:
+            return Euro()
+        case .denmark:
+            return Krona()
+        case .ukraine:
+            return Hryvnia()
+        case .usa:
+            return Dollar()
+        }
+    }
+}
+
+let currency1 = CurrencyFactory.make(currencyFor: .ukraine)
+print("\(currency1.getFlag()) \(currency1.getSymbol())")
+
+let currency2 = CurrencyFactory.make(currencyFor: .spain)
+print("\(currency2.getFlag()) \(currency2.getSymbol())")
+```
+
+```
+🇺🇦 ₴
+🇪🇺 €
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/r69ubmvh/)
+
+```typescript
+enum Country {
+    italy = 0,
+    spain, denmark, ukraine, usa
+}
+
+interface Currency {
+    getFlag(): String;
+    getSymbol(): String;
+}
+
+// Defining currencies based on protocol
+class Euro implements Currency {
+    public getFlag(): String {
+        return "🇪🇺"
+    }
+
+    public getSymbol(): String {
+        return "€"
+    }
+}
+
+class Krona implements Currency {
+    getFlag(): String {
+        return "🇩🇰"
+    }
+
+    public getSymbol(): String {
+        return "DKK"
+    }
+}
+
+class Hryvnia implements Currency {
+    getFlag(): String {
+        return "🇺🇦"
+    }
+
+    public getSymbol(): String {
+        return "₴"
+    }
+}
+
+class Dolar implements Currency {
+    getFlag(): String {
+        return "🇺🇸"
+    }
+
+    public getSymbol(): String {
+        return "$"
+    }
+}
+
+// Defining factory itself
+class CurrencyFactory {
+    public static make(currencyForCountry: Country): Currency {
+        switch (currencyForCountry) {
+            case Country.spain, Country.italy:
+                return new Euro();
+            case Country.denmark:
+                return new Krona();
+            case Country.ukraine:
+                return new Hryvnia();
+            case Country.usa:
+                return new Dolar();
+        }
+    }
+}
+
+let currency1 = CurrencyFactory.make(Country.ukraine);
+console.log(`${currency1.getFlag()} ${currency1.getSymbol()}`);
+
+let currency2 = CurrencyFactory.make(Country.denmark);
+console.log(`${currency2.getFlag()} ${currency2.getSymbol()}`);
+```
+
+```
+🇺🇦 ₴
+🇩🇰 DKK
+```
+
+</details>
+
 ## 🍾 Singleton
 Ensures a class has only one instance and provides a global point of access to it. Use cases: provide a unified access point to a resource or service that’s shared across an app/service, like an audio channel to play sound effects or a network manager to make HTTP requests.
 
@@ -125,186 +305,6 @@ test1.sayHi();
 [Log] Initialized.
 [Log] 0.8771180249127926
 [Log] Hi!
-```
-
-</details>
-
-## 🏭 Factory Method
-The factory pattern is used to replace class constructors, abstracting the process of object generation so that the type of the object instantiated can be determined at run-time.
-
-Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
-
-<details>
-	
-Real world example
-> Consider the case of currency creation. Where we want to create a currency object depending on the country.
-
-
-### Swift
-
-**Example:**
-```swift
-enum Country {
-    case italy, spain, denmark, ukraine, usa
-}
-
-protocol Currency {
-    func getFlag() -> String
-    func getSymbol() -> String
-}
-
-// Defining currencies based on protocol
-class Euro: Currency {
-    func getFlag() -> String {
-        return "🇪🇺"
-    }
-
-    func getSymbol() -> String {
-        return "€"
-    }
-}
-
-class Krona: Currency {
-    func getFlag() -> String {
-        return "🇩🇰"
-    }
-
-    func getSymbol() -> String {
-        return "DKK"
-    }
-}
-
-class Hryvnia: Currency {
-    func getFlag() -> String {
-        return "🇺🇦"
-    }
-
-    func getSymbol() -> String {
-        return "₴"
-    }
-}
-
-class Dollar: Currency {
-    func getFlag() -> String {
-        return "🇺🇸"
-    }
-
-    func getSymbol() -> String {
-        return "$"
-    }
-}
-
-// Defining factory itself
-class CurrencyFactory {
-    static func make(currencyFor country: Country) -> Currency {
-        switch country {
-        case .spain, .italy:
-            return Euro()
-        case .denmark:
-            return Krona()
-        case .ukraine:
-            return Hryvnia()
-        case .usa:
-            return Dollar()
-        }
-    }
-}
-
-let currency1 = CurrencyFactory.make(currencyFor: .ukraine)
-print("\(currency1.getFlag()) \(currency1.getSymbol())")
-
-let currency2 = CurrencyFactory.make(currencyFor: .spain)
-print("\(currency2.getFlag()) \(currency2.getSymbol())")
-```
-
-```
-🇺🇦 ₴
-🇪🇺 €
-```
-
-### TypeScript
-**Example:**
-[jsfiddle link](https://jsfiddle.net/gv7cfq3u/)
-
-```typescript
-enum Country {
-    italy = 0,
-    spain, denmark, ukraine, usa
-}
-
-interface Currency {
-    getFlag(): String;
-    getSymbol(): String;
-}
-
-// Defining currencies based on protocol
-class Euro implements Currency {
-    public getFlag(): String {
-        return "🇪🇺"
-    }
-
-    public getSymbol(): String {
-        return "€"
-    }
-}
-
-class Krona implements Currency {
-    getFlag(): String {
-        return "🇩🇰"
-    }
-
-    public getSymbol(): String {
-        return "DKK"
-    }
-}
-
-class Hryvnia implements Currency {
-    getFlag(): String {
-        return "🇺🇦"
-    }
-
-    public getSymbol(): String {
-        return "₴"
-    }
-}
-
-class Dolar implements Currency {
-    getFlag(): String {
-        return "🇺🇸"
-    }
-
-    public getSymbol(): String {
-        return "$"
-    }
-}
-
-// Defining factory itself
-class CurrencyFactory {
-    public static make(currencyForCountry: Country): Currency {
-        switch (currencyForCountry) {
-            case Country.spain, Country.italy:
-                return new Euro();
-            case Country.denmark:
-                return new Krona();
-            case Country.ukraine:
-                return new Hryvnia();
-            case Country.usa:
-                return new Dolar();
-        }
-    }
-}
-
-let currency1 = CurrencyFactory.make(Country.ukraine);
-console.log(`${currency1.getFlag()} ${currency1.getSymbol()}`);
-
-let currency2 = CurrencyFactory.make(Country.denmark);
-console.log(`${currency2.getFlag()} ${currency2.getSymbol()}`);
-```
-
-```
-🇺🇦 ₴
-🇩🇰 DKK
 ```
 
 </details>
