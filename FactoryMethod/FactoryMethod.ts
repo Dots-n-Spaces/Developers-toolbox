@@ -8,6 +8,7 @@ interface Currency {
     getSymbol(): String;
 }
 
+// Defining currencies based on protocol
 class Euro implements Currency {
     public getFlag(): String {
         return "🇪🇺"
@@ -48,6 +49,7 @@ class Dolar implements Currency {
     }
 }
 
+// Defining factory itself
 class CurrencyFactory {
     public static make(currencyForCountry: Country): Currency {
         switch (currencyForCountry) {

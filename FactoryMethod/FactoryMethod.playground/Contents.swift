@@ -7,6 +7,7 @@ protocol Currency {
     func getSymbol() -> String
 }
 
+// Defining currencies based on protocol
 class Euro: Currency {
     func getFlag() -> String {
         return "🇪🇺"
@@ -47,6 +48,7 @@ class Dollar: Currency {
     }
 }
 
+// Defining factory itself
 class CurrencyFactory {
     static func make(currencyFor country: Country) -> Currency {
         switch country {
