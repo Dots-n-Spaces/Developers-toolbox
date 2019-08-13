@@ -1,5 +1,5 @@
 # Developers-toolbox
-Toolbox of software design pattern, algorithms and typical problems
+Toolbox of software design pattern, algorithms and typical problems. Part of Develepor's toolbox series: [link](https://medium.com/dots-and-spaces).
 
 # Creational
 ## 🏭 Factory Method
@@ -320,3 +320,6 @@ test1.sayHi();
 - https://github.com/nslocum/design-patterns-in-ruby
 - https://github.com/rust-unofficial/patterns
 - https://github.com/tcorral/Design-Patterns-in-Javascript
+
+
+Made with ❤️ by [Dots and Spaces](http://dots-n-spaces.com).
