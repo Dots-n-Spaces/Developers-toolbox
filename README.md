@@ -138,7 +138,7 @@ Wikipedia says
 <details>
 	
 Real world example
-> Consider the case of a currency creation. Where we want to create a currency object depending on the country.
+> Consider the case of currency creation. Where we want to create a currency object depending on the country.
 
 
 ### Swift
@@ -154,6 +154,7 @@ protocol Currency {
     func getSymbol() -> String
 }
 
+// Defining currencies based on protocol
 class Euro: Currency {
     func getFlag() -> String {
         return "🇪🇺"
@@ -194,6 +195,7 @@ class Dollar: Currency {
     }
 }
 
+// Defining factory itself
 class CurrencyFactory {
     static func make(currencyFor country: Country) -> Currency {
         switch country {
@@ -236,6 +238,7 @@ interface Currency {
     getSymbol(): String;
 }
 
+// Defining currencies based on protocol
 class Euro implements Currency {
     public getFlag(): String {
         return "🇪🇺"
@@ -276,6 +279,7 @@ class Dolar implements Currency {
     }
 }
 
+// Defining factory itself
 class CurrencyFactory {
     public static make(currencyForCountry: Country): Currency {
         switch (currencyForCountry) {
