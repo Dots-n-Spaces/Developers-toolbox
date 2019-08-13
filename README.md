@@ -126,6 +126,175 @@ test1.sayHi();
 
 </details>
 
+## 🏭 Factory Method
+
+
+<details>
+
+### Swift
+
+**Example:**
+```swift
+enum Country {
+    case italy, spain, denmark, ukraine, usa
+}
+
+protocol Currency {
+    func getFlag() -> String
+    func getSymbol() -> String
+}
+
+class Euro: Currency {
+    func getFlag() -> String {
+        return "🇪🇺"
+    }
+
+    func getSymbol() -> String {
+        return "€"
+    }
+}
+
+class Krona: Currency {
+    func getFlag() -> String {
+        return "🇩🇰"
+    }
+
+    func getSymbol() -> String {
+        return "DKK"
+    }
+}
+
+class Hryvnia: Currency {
+    func getFlag() -> String {
+        return "🇺🇦"
+    }
+
+    func getSymbol() -> String {
+        return "₴"
+    }
+}
+
+class Dollar: Currency {
+    func getFlag() -> String {
+        return "🇺🇸"
+    }
+
+    func getSymbol() -> String {
+        return "$"
+    }
+}
+
+class CurrencyFactory {
+    static func make(currencyFor country: Country) -> Currency {
+        switch country {
+        case .spain, .italy:
+            return Euro()
+        case .denmark:
+            return Krona()
+        case .ukraine:
+            return Hryvnia()
+        case .usa:
+            return Dollar()
+        }
+    }
+}
+
+let currency1 = CurrencyFactory.make(currencyFor: .ukraine)
+print("\(currency1.getFlag()) \(currency1.getSymbol())")
+
+let currency2 = CurrencyFactory.make(currencyFor: .spain)
+print("\(currency2.getFlag()) \(currency2.getSymbol())")
+```
+
+```
+🇺🇦 ₴
+🇪🇺 €
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/gv7cfq3u/)
+
+```typescript
+enum Country {
+    italy = 0,
+    spain, denmark, ukraine, usa
+}
+
+interface Currency {
+    getFlag(): String;
+    getSymbol(): String;
+}
+
+class Euro implements Currency {
+    public getFlag(): String {
+        return "🇪🇺"
+    }
+
+    public getSymbol(): String {
+        return "€"
+    }
+}
+
+class Krona implements Currency {
+    getFlag(): String {
+        return "🇩🇰"
+    }
+
+    public getSymbol(): String {
+        return "DKK"
+    }
+}
+
+class Hryvnia implements Currency {
+    getFlag(): String {
+        return "🇺🇦"
+    }
+
+    public getSymbol(): String {
+        return "₴"
+    }
+}
+
+class Dolar implements Currency {
+    getFlag(): String {
+        return "🇺🇸"
+    }
+
+    public getSymbol(): String {
+        return "$"
+    }
+}
+
+class CurrencyFactory {
+    public static make(currencyForCountry: Country): Currency {
+        switch (currencyForCountry) {
+            case Country.spain, Country.italy:
+                return new Euro();
+            case Country.denmark:
+                return new Krona();
+            case Country.ukraine:
+                return new Hryvnia();
+            case Country.usa:
+                return new Dolar();
+        }
+    }
+}
+
+let currency1 = CurrencyFactory.make(Country.ukraine);
+console.log(`${currency1.getFlag()} ${currency1.getSymbol()}`);
+
+let currency2 = CurrencyFactory.make(Country.denmark);
+console.log(`${currency2.getFlag()} ${currency2.getSymbol()}`);
+```
+
+```
+🇺🇦 ₴
+🇩🇰 DKK
+```
+
+</details>
+
 
 ### Inspired by:
 - https://github.com/kamranahmedse/design-patterns-for-humans
