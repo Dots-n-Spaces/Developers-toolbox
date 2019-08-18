@@ -1,6 +1,122 @@
 # Developers-toolbox
 Toolbox of software design pattern, algorithms and typical problems. Part of Develepor's toolbox series: [link](https://medium.com/dots-and-spaces).
 
+# Structural
+## 🔌 Adapter
+Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
+
+Wikipedia says:
+> In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
+
+<details>
+
+### Real world example
+> Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
+> Yet another example would be a translator translating words spoken by one person to another
+
+### Demo example:
+> Power adapter: a two pronged legged US plug can't be connected to an EU outlet, it needs to use a power adapter.
+
+#### Swift
+```swift
+// Adaptee: SocketDenmark contains some useful behavior, but it is incompatible
+// with the existing LaptopUS. The SocketDenmark needs some adaptation before the
+// LaptopUS can use it.
+// 🇩🇰 socket
+class SocketDenmark {
+    public func forbinde() { //connect in Danish
+        print("Adapee: Forbundet.") // connected in Danish
+    }
+}
+
+// Target: SocketUS defines the domain-specific implementation.
+class SocketUS {
+    func connect() {
+        print("Target: Connected.")
+    }
+}
+
+/// Adapter: makes SocketDenmark compatible with the SocketUS.
+// 🇺🇸 plug to 🇩🇰 socket adapter.
+class Adapter: SocketUS {
+    private var SocketDenmark: SocketDenmark
+
+    init(_ SocketDenmark: SocketDenmark) {
+        self.SocketDenmark = SocketDenmark
+    }
+
+    override func connect() {
+        print("Adapter: Connecting...")
+        SocketDenmark.forbinde()
+        print("Adapter: Connected.")
+    }
+}
+
+// Client: uses Adapter.
+// Laptop with 🇺🇸 plug
+class LaptopUS {
+    static func connectUSPlugToElectricity(socket: SocketUS) {
+        print(socket.connect())
+    }
+}
+
+LaptopUS.connectUSPlugToElectricity(socket: SocketUS())
+LaptopUS.connectUSPlugToElectricity(socket: Adapter(SocketDenmark()))
+
+```
+
+### TypeScript
+[jsfiddle link](https://jsfiddle.net/skrLme5w/)
+```typescript
+// Adaptee: SocketDenmark contains some useful behavior, but it is incompatible
+// with the existing LaptopUS. The SocketDenmark needs some adaptation before the
+// LaptopUS can use it.
+// 🇩🇰 socket
+class SocketDenmark {
+    public forbinde(): void { //connect in Danish
+        console.log("Adapee: Forbundet."); // connected in Danish
+    }
+}
+
+// Target: SocketUS defines the domain-specific implementation.
+class SocketUS {
+    public connect(): void {
+        console.log("Target: Connected.");
+    }
+}
+
+/// Adapter: makes SocketDenmark compatible with the SocketUS.
+// 🇺🇸 plug to 🇩🇰 socket adapter.
+class Adapter extends SocketUS {
+    private adaptee: SocketDenmark;
+
+    constructor(adaptee: SocketDenmark) {
+        super();
+
+        this.adaptee = adaptee;
+    }
+
+    public connect(): void {
+        console.log("Adapter: Connecting...");
+        this.adaptee.forbinde();
+        console.log("Adapter: Connected.");
+    }
+}
+
+// Client: uses Adapter.
+// Laptop with 🇺🇸 plug
+class LaptopUS {
+    static connectUSPlugToElectricity(socket: SocketUS): void {
+        console.log(socket.connect());
+    }
+}
+
+LaptopUS.connectUSPlugToElectricity(new SocketUS());
+LaptopUS.connectUSPlugToElectricity(new Adapter(new SocketDenmark()));
+```
+
+</details>
+
 # Creational
 ## 🏭 Factory Method
 The factory pattern is used to replace class constructors, abstracting the process of object generation so that the type of the object instantiated can be determined at run-time.
