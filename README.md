@@ -12,9 +12,10 @@ Wikipedia says:
 
 ### Real world example
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
+
 > Yet another example would be a translator translating words spoken by one person to another
 
-### Demo example:
+### Demo example
 > Power adapter: a two pronged legged US plug can't be connected to an EU outlet, it needs to use a power adapter.
 
 #### Swift
@@ -126,9 +127,8 @@ Wikipedia says:
 
 <details>
 	
-### Real world example
+### Demo example
 > Consider the case of currency creation. Where we want to create a currency object depending on the country.
-
 
 ### Swift
 
@@ -305,6 +305,14 @@ Wikipedia says:
 > In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
 
 <details>
+	
+### Real world example
+> All database queries should be executed through only one connection.
+
+> I/O to a memorry should be through one channel.
+	
+### Demo example
+> Say hi must be told only in one way through one instance.
 
 ### Swift
 
