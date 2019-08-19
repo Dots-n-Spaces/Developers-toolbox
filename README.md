@@ -206,7 +206,7 @@ print("\(currency1.getFlag()) \(currency1.getSymbol())")
 let currency2 = CurrencyFactory.make(currencyFor: .spain)
 print("\(currency2.getFlag()) \(currency2.getSymbol())")
 ```
-
+#### Output:
 ```
 🇺🇦 ₴
 🇪🇺 €
@@ -290,7 +290,7 @@ console.log(`${currency1.getFlag()} ${currency1.getSymbol()}`);
 let currency2 = CurrencyFactory.make(Country.denmark);
 console.log(`${currency2.getFlag()} ${currency2.getSymbol()}`);
 ```
-
+#### Output:
 ```
 🇺🇦 ₴
 🇩🇰 DKK
@@ -337,7 +337,7 @@ final class Singleton {
 let instance = Singleton.sharedInstance
 instance.sayHi()
 ```
-
+#### Output:
 ```
 Initialized.
 Hi!
@@ -347,7 +347,7 @@ Hi!
 // Next line will fail
 Singleton()
 ```
-
+#### Output:
 ```
 error: Singleton.playground:21:1: error: 'Singleton' initializer is inaccessible due to 'private' protection level
 Singleton()
@@ -401,7 +401,7 @@ console.log(instance1.id);
 const instance2 = SingletonPattern.Singleton.getInstance();
 console.log(instance2.id);
 ```
-
+#### Output:
 ```
 [Log] Initialized.
 [Log] Hi!
@@ -421,6 +421,7 @@ console.log(test2.id);
 test1.sayHi();
 ```
 
+#### Output:
 ```
 [Log] 🤔
 [Log] Initialized.
