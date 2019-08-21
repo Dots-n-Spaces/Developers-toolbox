@@ -200,7 +200,7 @@ veryDifficultMethod of SystemC
 ```
 
 ### TypeScript
-[jsfiddle link](https://jsfiddle.net/skrLme5w/)
+[jsfiddle link](https://jsfiddle.net/L06utyb8/)
 ```typescript
 namespace FacadePattern {
     export class SystemA {
