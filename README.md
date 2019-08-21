@@ -63,7 +63,14 @@ class LaptopUS {
 
 LaptopUS.connectUSPlugToElectricity(socket: SocketUS())
 LaptopUS.connectUSPlugToElectricity(socket: Adapter(SocketDenmark()))
+```
+#### Output:
+```
+Target: Connected.
 
+Adapter: Connecting...
+Adapee: Forbundet.
+Adapter: Connected.
 ```
 
 ### TypeScript
@@ -114,6 +121,14 @@ class LaptopUS {
 
 LaptopUS.connectUSPlugToElectricity(new SocketUS());
 LaptopUS.connectUSPlugToElectricity(new Adapter(new SocketDenmark()));
+```
+#### Output:
+```
+Target: Connected.
+
+Adapter: Connecting...
+Adapee: Forbundet.
+Adapter: Connected.
 ```
 
 </details>
@@ -403,10 +418,10 @@ console.log(instance2.id);
 ```
 #### Output:
 ```
-[Log] Initialized.
-[Log] Hi!
-[Log] 0.32110868008151106
-[Log] 0.32110868008151106
+Initialized.
+Hi!
+0.32110868008151106
+0.32110868008151106
 ```
 
 ```
@@ -423,13 +438,13 @@ test1.sayHi();
 
 #### Output:
 ```
-[Log] 🤔
-[Log] Initialized.
-[Log] 0.9238042630755623
-[Log] Hi!
-[Log] Initialized.
-[Log] 0.8771180249127926
-[Log] Hi!
+🤔
+Initialized.
+0.9238042630755623
+Hi!
+Initialized.
+0.8771180249127926
+Hi!
 ```
 
 </details>
