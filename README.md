@@ -133,6 +133,134 @@ Adapter: Connected.
 
 </details>
 
+## 🎁 Façade
+The facade pattern is used to define a simplified interface to a more complex subsystem.
+
+Wikipedia says:
+> Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
+
+<details>
+
+#### Swift
+```swift
+final class SystemA {
+    public func veryBigMethod() {
+        print("veryBigMethod of SystemA");
+    }
+}
+
+final class SystemB {
+    public func veryImportantMethod() {
+        print("veryImportantMethod of SystemB");
+    }
+}
+
+final class SystemC {
+    public func veryDifficultMethod() {
+        print("veryDifficultMethod of SystemC");
+    }
+}
+
+class Facade {
+    private let a = SystemA()
+    private let b = SystemB()
+    private let c = SystemC()
+
+    public func runBigAndImportantStuff() {
+        print("-- runBigAndImportantStuff started --")
+        self.a.veryBigMethod()
+        self.b.veryImportantMethod()
+        print("-- runBigAndImportantStuff is done --")
+    }
+
+    public func  runBigAndDifficultStuff() {
+        print("-- runBigAndDifficultStuff started --")
+        self.a.veryBigMethod()
+        self.c.veryDifficultMethod()
+        print("-- runBigAndDifficultStuff is done --")
+    }
+}
+
+let facade = Facade()
+facade.runBigAndImportantStuff()
+facade.runBigAndDifficultStuff()
+```
+#### Output:
+```
+-- runBigAndImportantStuff started --
+veryBigMethod of SystemA
+veryImportantMethod of SystemB
+-- runBigAndImportantStuff is done --
+
+-- runBigAndDifficultStuff started --
+veryBigMethod of SystemA
+veryDifficultMethod of SystemC
+-- runBigAndDifficultStuff is done --
+
+```
+
+### TypeScript
+[jsfiddle link](https://jsfiddle.net/skrLme5w/)
+```typescript
+namespace FacadePattern {
+    export class SystemA {
+        public veryBigMethod(): void {
+            console.log("veryBigMethod of SystemA");
+        }
+    }
+
+    export class SystemB {
+        public veryImportantMethod(): void {
+            console.log("veryImportantMethod of SystemB");
+        }
+    }
+
+    export class SystemC {
+        public veryDifficultMethod(): void {
+            console.log("veryDifficultMethod of SystemC");
+        }
+    }
+
+    export class Facade {
+        private a = new SystemA();
+        private b = new SystemB();
+        private c = new SystemC();
+
+        public runBigAndImportantStuff(): void {
+            console.log(`-- runBigAndImportantStuff started --`);
+            this.a.veryBigMethod();
+            this.b.veryImportantMethod();
+            console.log(`-- runBigAndImportantStuff is done --`);
+        }
+
+        public runBigAndDifficultStuff(): void {
+            console.log(`-- runBigAndDifficultStuff started --`);
+            this.a.veryBigMethod();
+            this.c.veryDifficultMethod();
+            console.log(`-- runBigAndDifficultStuff is done --`);
+        }
+    }
+}
+
+const facade = new FacadePattern.Facade();
+facade.runBigAndImportantStuff();
+facade.runBigAndDifficultStuff();
+```
+#### Output:
+```
+-- runBigAndImportantStuff started --
+veryBigMethod of SystemA
+veryImportantMethod of SystemB
+-- runBigAndImportantStuff is done --
+
+-- runBigAndDifficultStuff started --
+veryBigMethod of SystemA
+veryDifficultMethod of SystemC
+-- runBigAndDifficultStuff is done --
+```
+
+</details>
+
 # Creational
 ## 🏭 Factory Method
 The factory pattern is used to replace class constructors, abstracting the process of object generation so that the type of the object instantiated can be determined at run-time.
