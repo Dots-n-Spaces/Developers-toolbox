@@ -305,7 +305,9 @@ Printing values:
 <details>
 
 ### Real world example
-> ?
+> Ticket counter line where people who come first will get his ticket first.
+
+> Key press sequence in keyboard.
 
 ### Swift
 
