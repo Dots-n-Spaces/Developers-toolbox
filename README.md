@@ -7,12 +7,12 @@ Toolbox of software design pattern, algorithms, data structures, and typical pro
 [Wikipedia says](https://en.wikipedia.org/wiki/Linked_list):
 > In computer science, a Linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration
 
-| Data Structure     | Time Complexity                                                                | Space Complexity |
-|                    | Average                                | Worst                                 | Worst            |
-|                    | Access | Search | Insertion | Deletion | Access | Search | Insertion | Deletion |                 |
-| -------------------|-------:| ------:|----------:|---------:|-------:|-------:|----------:|---------:|----------------:|
-| Singly-Linked List | Θ(n)   | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)   | O(1)      | O(1)     | O(n)            |
-| Doubly-Linked List | Θ(n)   | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)   | O(1)      | O(1)     | O(n)            |
+| Data Structure     | Time Complexity |        |           |          |        |         |           |          | Space Complexity |
+| ------------------ |----------------:| ------:|----------:|---------:|-------:|--------:|----------:|---------:|-----------------:|
+|                    | Average         |        |           |          | Worst  |         |           |          | Worst            |
+|                    | Access          | Search | Insertion | Deletion | Access | Search  | Insertion | Deletion |                  |
+| Singly-Linked List | Θ(n)            | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)    | O(1)      | O(1)     | O(n)             |
+| Doubly-Linked List | Θ(n)            | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)    | O(1)      | O(1)     | O(n)             |
 
 <details>
 
