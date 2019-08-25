@@ -1,5 +1,5 @@
 # Developers-toolbox
-Toolbox of software design pattern, algorithms and typical problems. Part of Develepor's toolbox series: [link](https://medium.com/dots-and-spaces).
+Toolbox of software design pattern, algorithms, data structures, and typical problems. Repo includes swift and typescript examples (add other languages if you feel so). Part of Develepor's toolbox series: [link](https://medium.com/dots-and-spaces).
 
 # Design patterns
 ## Structural
