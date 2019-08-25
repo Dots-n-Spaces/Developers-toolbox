@@ -591,6 +591,11 @@ Hi!
 
 <details>
 
+#### Real world example
+> Consider the history section of web browsers, where it creates a linked list of web-pages visited, so that when you check history (traversal of a list) or press back button, the previous node's data is fetched.
+
+> Another real life example could a be queue/line of persons standing for food in mess, insertion is done at one end and deletion at other. And these operations happen frequent. dynamic queues / stacks are efficiently implemented using linked lists.
+
 #### Swift
 
 **Example:**
