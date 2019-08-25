@@ -866,6 +866,7 @@ Printing values:
 
 </details>
 
+<hr />
 
 ### Inspired by:
 - https://github.com/kamranahmedse/design-patterns-for-humans
