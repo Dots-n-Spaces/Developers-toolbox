@@ -1,8 +1,9 @@
 # Developers-toolbox
 Toolbox of software design pattern, algorithms and typical problems. Part of Develepor's toolbox series: [link](https://medium.com/dots-and-spaces).
 
-# Structural
-## 🔌 Adapter
+# Design patterns
+## Structural
+### 🔌 Adapter
 Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
 
 Wikipedia says:
@@ -10,15 +11,15 @@ Wikipedia says:
 
 <details>
 
-### Real world example
+#### Real world example
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
 
 > Yet another example would be a translator translating words spoken by one person to another
 
-### Demo example
+#### Demo example
 > Power adapter: a two pronged legged US plug can't be connected to an EU outlet, it needs to use a power adapter.
 
-#### Swift
+##### Swift
 ```swift
 // Adaptee: SocketDenmark contains some useful behavior, but it is incompatible
 // with the existing LaptopUS. The SocketDenmark needs some adaptation before the
@@ -64,7 +65,7 @@ class LaptopUS {
 LaptopUS.connectUSPlugToElectricity(socket: SocketUS())
 LaptopUS.connectUSPlugToElectricity(socket: Adapter(SocketDenmark()))
 ```
-#### Output:
+##### Output:
 ```
 Target: Connected.
 
@@ -73,7 +74,7 @@ Adapee: Forbundet.
 Adapter: Connected.
 ```
 
-### TypeScript
+#### TypeScript
 [jsfiddle link](https://jsfiddle.net/skrLme5w/)
 ```typescript
 // Adaptee: SocketDenmark contains some useful behavior, but it is incompatible
@@ -122,7 +123,7 @@ class LaptopUS {
 LaptopUS.connectUSPlugToElectricity(new SocketUS());
 LaptopUS.connectUSPlugToElectricity(new Adapter(new SocketDenmark()));
 ```
-#### Output:
+##### Output:
 ```
 Target: Connected.
 
@@ -133,7 +134,7 @@ Adapter: Connected.
 
 </details>
 
-## 🎁 Façade
+### 🎁 Façade
 The facade pattern is used to define a simplified interface to a more complex subsystem.
 
 Wikipedia says:
@@ -141,7 +142,7 @@ Wikipedia says:
 
 <details>
 
-#### Swift
+##### Swift
 ```swift
 final class SystemA {
     public func veryBigMethod() {
@@ -185,7 +186,7 @@ let facade = Facade()
 facade.runBigAndImportantStuff()
 facade.runBigAndDifficultStuff()
 ```
-#### Output:
+##### Output:
 ```
 -- runBigAndImportantStuff started --
 veryBigMethod of SystemA
@@ -199,7 +200,7 @@ veryDifficultMethod of SystemC
 
 ```
 
-### TypeScript
+#### TypeScript
 [jsfiddle link](https://jsfiddle.net/L06utyb8/)
 ```typescript
 namespace FacadePattern {
@@ -246,7 +247,7 @@ const facade = new FacadePattern.Facade();
 facade.runBigAndImportantStuff();
 facade.runBigAndDifficultStuff();
 ```
-#### Output:
+##### Output:
 ```
 -- runBigAndImportantStuff started --
 veryBigMethod of SystemA
@@ -261,19 +262,19 @@ veryDifficultMethod of SystemC
 
 </details>
 
-# Creational
-## 🏭 Factory Method
+## Creational
+### 🏭 Factory Method
 The factory pattern is used to replace class constructors, abstracting the process of object generation so that the type of the object instantiated can be determined at run-time.
 
 Wikipedia says:
 > In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
 
 <details>
-	
-### Demo example
+
+#### Demo example
 > Consider the case of currency creation. Where we want to create a currency object depending on the country.
 
-### Swift
+#### Swift
 
 **Example:**
 ```swift
@@ -349,13 +350,13 @@ print("\(currency1.getFlag()) \(currency1.getSymbol())")
 let currency2 = CurrencyFactory.make(currencyFor: .spain)
 print("\(currency2.getFlag()) \(currency2.getSymbol())")
 ```
-#### Output:
+##### Output:
 ```
 🇺🇦 ₴
 🇪🇺 €
 ```
 
-### TypeScript
+#### TypeScript
 **Example:**
 [jsfiddle link](https://jsfiddle.net/r69ubmvh/)
 
@@ -433,7 +434,7 @@ console.log(`${currency1.getFlag()} ${currency1.getSymbol()}`);
 let currency2 = CurrencyFactory.make(Country.denmark);
 console.log(`${currency2.getFlag()} ${currency2.getSymbol()}`);
 ```
-#### Output:
+##### Output:
 ```
 🇺🇦 ₴
 🇩🇰 DKK
@@ -441,23 +442,23 @@ console.log(`${currency2.getFlag()} ${currency2.getSymbol()}`);
 
 </details>
 
-## 🍾 Singleton
+### 🍾 Singleton
 Ensures a class has only one instance and provides a global point of access to it. Use cases: provide a unified access point to a resource or service that’s shared across an app/service, like an audio channel to play sound effects or a network manager to make HTTP requests.
 
 Wikipedia says:
 > In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
 
 <details>
-	
-### Real world example
+
+#### Real world example
 > All database queries should be executed through only one connection.
 
 > I/O to a memorry should be through one channel.
-	
-### Demo example
+
+#### Demo example
 > Say hi must be told only in one way through one instance.
 
-### Swift
+#### Swift
 
 **Example:**
 ```swift
@@ -480,7 +481,7 @@ final class Singleton {
 let instance = Singleton.sharedInstance
 instance.sayHi()
 ```
-#### Output:
+##### Output:
 ```
 Initialized.
 Hi!
@@ -490,7 +491,7 @@ Hi!
 // Next line will fail
 Singleton()
 ```
-#### Output:
+##### Output:
 ```
 error: Singleton.playground:21:1: error: 'Singleton' initializer is inaccessible due to 'private' protection level
 Singleton()
@@ -501,7 +502,7 @@ Singleton.playground:8:13: note: 'init()' declared here
             ^
 ```
 
-### TypeScript
+#### TypeScript
 **Example:**
 [jsfiddle link](https://jsfiddle.net/6ekmdvn1/)
 
@@ -544,7 +545,7 @@ console.log(instance1.id);
 const instance2 = SingletonPattern.Singleton.getInstance();
 console.log(instance2.id);
 ```
-#### Output:
+##### Output:
 ```
 Initialized.
 Hi!
@@ -564,7 +565,7 @@ console.log(test2.id);
 test1.sayHi();
 ```
 
-#### Output:
+##### Output:
 ```
 🤔
 Initialized.
