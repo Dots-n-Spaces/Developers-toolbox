@@ -1,4 +1,4 @@
-# Developers-toolbox
+# 🧰 Developers-toolbox
 Toolbox of software design pattern, algorithms, data structures, and typical problems. Repo includes swift and typescript examples (add other languages if you feel so). Part of Develepor's toolbox series: [link](https://medium.com/dots-and-spaces).
 
 # Data Structures
