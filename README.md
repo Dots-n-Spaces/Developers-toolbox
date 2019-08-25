@@ -1,8 +1,298 @@
 # Developers-toolbox
 Toolbox of software design pattern, algorithms, data structures, and typical problems. Repo includes swift and typescript examples (add other languages if you feel so). Part of Develepor's toolbox series: [link](https://medium.com/dots-and-spaces).
 
+# Data Structures
+## Linked List
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Linked_list):
+> In computer science, a Linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration
+
+| Data Structure       | Insert | Delete | Balance | Get at index | Search | Find minimum | Find maximum | Space usage |
+| -------------------- |-------:| ------:|--------:|-------------:|-------:|-------------:|-------------:|------------:|
+| Unsorted linked list | O(1) | O(1)     | N/A     | O(n)         | O(n)   | O(n)         | O(n)         | O(n)        |
+| Sorted linked list   | O(n) | O(1)     | N/A     | O(n)         | O(n)   | O(1)         | O(1)         | O(n)        |
+
+<details>
+
+### Real world example
+> Consider the history section of web browsers, where it creates a linked list of web-pages visited, so that when you check history (traversal of a list) or press back button, the previous node's data is fetched.
+
+> Another real life example could a be queue/line of persons standing for food in mess, insertion is done at one end and deletion at other. And these operations happen frequent. dynamic queues / stacks are efficiently implemented using linked lists.
+
+### Swift
+
+**Example:**
+```swift
+class Node {
+    var value: Int?
+    var next: Node?
+}
+
+class LinkedList {
+    var head: Node?
+
+    func insert(value: Int) {
+        print("Inserting: \(value)")
+
+        if var iteratingHead = self.head {
+            while(iteratingHead.next != nil) {
+                iteratingHead = iteratingHead.next!
+            }
+
+            iteratingHead.next = Node()
+            iteratingHead.next?.value = value
+        }
+        else {
+            self.head = Node()
+            self.head?.value = value
+        }
+    }
+
+    func remove(value: Int) {
+        print("Removing: \(value)")
+
+        if var iteratingHead = self.head {
+            var lastNode = self.head!
+            while(iteratingHead.value != value && iteratingHead.next != nil) {
+                lastNode = iteratingHead
+                iteratingHead = iteratingHead.next!
+            }
+
+            if iteratingHead.value == value {
+                if iteratingHead.next != nil {
+                    lastNode.value = nil
+                    lastNode.next = iteratingHead.next
+                }
+                else {
+                    lastNode.next = nil
+                }
+            }
+        }
+        else {
+            print("It looks like list is not initilezed yet.")
+        }
+    }
+
+    func printAll() {
+        print("Printing values:")
+
+        if var iteratingHead = head {
+            while(iteratingHead.next != nil) {
+                print(iteratingHead.value ?? 0)
+
+                iteratingHead = iteratingHead.next!
+            }
+
+            print(iteratingHead.value ?? 0)
+        } else {
+            print("List is empty.")
+        }
+
+        print("---")
+    }
+}
+
+var list = LinkedList()
+list.printAll()
+
+list.insert(value: 22)
+list.insert(value: 33)
+list.insert(value: 44)
+list.insert(value: 55)
+list.insert(value: 66)
+
+list.printAll()
+
+list.remove(value: 33)
+list.remove(value: 66)
+
+list.printAll()
+
+list.remove(value: 22)
+list.remove(value: 44)
+list.remove(value: 55)
+list.remove(value: 66)
+
+list.printAll()
+
+```
+
+#### Output:
+```
+Printing values:
+List is empty.
+---
+Inserting: 22
+Inserting: 33
+Inserting: 44
+Inserting: 55
+Inserting: 66
+Printing values:
+22
+33
+44
+55
+66
+---
+Removing: 33
+Removing: 66
+Printing values:
+44
+55
+66
+---
+Removing: 22
+Removing: 44
+Removing: 55
+Removing: 66
+Printing values:
+---
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/Lvxj67hz/)
+
+```typescript
+class LinkedListNode {
+    public value: number;
+    public next: LinkedListNode;
+}
+
+class LinkedList {
+    public head: LinkedListNode;
+
+    public insert(value: number): void {
+        console.log(`Inserting: ${value}`);
+
+        let iteratingHead = this.head;
+
+        if (iteratingHead != null) {
+            while (iteratingHead.next != null) {
+                iteratingHead = iteratingHead.next;
+            }
+
+            iteratingHead.next = new LinkedListNode();
+            iteratingHead.next.value = value;
+        } else {
+            this.head = new LinkedListNode();
+            this.head.value = value;
+        }
+    }
+
+    public remove(value: number): void {
+        console.log(`Removing: ${value}`);
+
+        let iteratingHead = this.head;
+
+        if (iteratingHead != null) {
+            let lastNode = iteratingHead;
+
+            while (iteratingHead.next != null && iteratingHead.next.value === value) {
+                lastNode = iteratingHead;
+                iteratingHead = iteratingHead.next;
+            }
+
+            if (iteratingHead.value === value) {
+                if (iteratingHead.next != null) {
+                    lastNode.value = null;
+                    lastNode.next = iteratingHead.next;
+                } else {
+                    lastNode.next = null;
+                }
+            }
+        } else {
+            console.log("It looks like list is not initilezed yet.");
+        }
+    }
+
+    public printAll(): void {
+        console.log("Printing values:");
+
+        let iteratingHead = this.head;
+
+        if (iteratingHead != null) {
+            while (iteratingHead.next != null) {
+                if (iteratingHead.value != null) {
+                    console.log(iteratingHead.value);
+                }
+
+                iteratingHead = iteratingHead.next;
+            }
+
+            if (iteratingHead.value != null) {
+                console.log(iteratingHead.value);
+            }
+        } else {
+            console.log("List is empty.");
+        }
+
+        console.log("---");
+    }
+}
+
+const list = new LinkedList();
+list.printAll();
+
+list.insert(22);
+list.insert(33);
+list.insert(44);
+list.insert(55);
+list.insert(66);
+
+list.printAll();
+
+list.remove(33);
+list.remove(66);
+
+list.printAll();
+
+list.remove(22);
+list.remove(44);
+list.remove(55);
+list.remove(66);
+
+list.printAll();
+```
+
+#### Output:
+```
+Printing values:
+List is empty.
+---
+Inserting: 22
+Inserting: 33
+Inserting: 44
+Inserting: 55
+Inserting: 66
+Printing values:
+22
+33
+44
+55
+66
+---
+Removing: 33
+Removing: 66
+Printing values:
+44
+55
+66
+---
+Removing: 22
+Removing: 44
+Removing: 55
+Removing: 66
+Printing values:
+---
+```
+
+</details>
+
 # Design patterns
+
 ## Structural
+
 ### 🔌 Adapter
 Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
 
@@ -263,6 +553,7 @@ veryDifficultMethod of SystemC
 </details>
 
 ## Creational
+
 ### 🏭 Factory Method
 The factory pattern is used to replace class constructors, abstracting the process of object generation so that the type of the object instantiated can be determined at run-time.
 
@@ -574,294 +865,6 @@ Hi!
 Initialized.
 0.8771180249127926
 Hi!
-```
-
-</details>
-
-## Data Structures
-### Linked List
-
-[Wikipedia says](https://en.wikipedia.org/wiki/Linked_list):
-> In computer science, a Linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration
-
-| Data Structure       | Insert | Delete | Balance | Get at index | Search | Find minimum | Find maximum | Space usage |
-| -------------------- |-------:| ------:|--------:|-------------:|-------:|-------------:|-------------:|------------:|
-| Unsorted linked list | O(1) | O(1)     | N/A     | O(n)         | O(n)   | O(n)         | O(n)         | O(n)        |
-| Sorted linked list   | O(n) | O(1)     | N/A     | O(n)         | O(n)   | O(1)         | O(1)         | O(n)        |
-
-<details>
-
-#### Real world example
-> Consider the history section of web browsers, where it creates a linked list of web-pages visited, so that when you check history (traversal of a list) or press back button, the previous node's data is fetched.
-
-> Another real life example could a be queue/line of persons standing for food in mess, insertion is done at one end and deletion at other. And these operations happen frequent. dynamic queues / stacks are efficiently implemented using linked lists.
-
-#### Swift
-
-**Example:**
-```swift
-class Node {
-    var value: Int?
-    var next: Node?
-}
-
-class LinkedList {
-    var head: Node?
-
-    func insert(value: Int) {
-        print("Inserting: \(value)")
-
-        if var iteratingHead = self.head {
-            while(iteratingHead.next != nil) {
-                iteratingHead = iteratingHead.next!
-            }
-
-            iteratingHead.next = Node()
-            iteratingHead.next?.value = value
-        }
-        else {
-            self.head = Node()
-            self.head?.value = value
-        }
-    }
-
-    func remove(value: Int) {
-        print("Removing: \(value)")
-
-        if var iteratingHead = self.head {
-            var lastNode = self.head!
-            while(iteratingHead.value != value && iteratingHead.next != nil) {
-                lastNode = iteratingHead
-                iteratingHead = iteratingHead.next!
-            }
-
-            if iteratingHead.value == value {
-                if iteratingHead.next != nil {
-                    lastNode.value = nil
-                    lastNode.next = iteratingHead.next
-                }
-                else {
-                    lastNode.next = nil
-                }
-            }
-        }
-        else {
-            print("It looks like list is not initilezed yet.")
-        }
-    }
-
-    func printAll() {
-        print("Printing values:")
-
-        if var iteratingHead = head {
-            while(iteratingHead.next != nil) {
-                print(iteratingHead.value ?? 0)
-
-                iteratingHead = iteratingHead.next!
-            }
-
-            print(iteratingHead.value ?? 0)
-        } else {
-            print("List is empty.")
-        }
-
-        print("---")
-    }
-}
-
-var list = LinkedList()
-list.printAll()
-
-list.insert(value: 22)
-list.insert(value: 33)
-list.insert(value: 44)
-list.insert(value: 55)
-list.insert(value: 66)
-
-list.printAll()
-
-list.remove(value: 33)
-list.remove(value: 66)
-
-list.printAll()
-
-list.remove(value: 22)
-list.remove(value: 44)
-list.remove(value: 55)
-list.remove(value: 66)
-
-list.printAll()
-
-```
-
-##### Output:
-```
-Printing values:
-List is empty.
----
-Inserting: 22
-Inserting: 33
-Inserting: 44
-Inserting: 55
-Inserting: 66
-Printing values:
-22
-33
-44
-55
-66
----
-Removing: 33
-Removing: 66
-Printing values:
-44
-55
-66
----
-Removing: 22
-Removing: 44
-Removing: 55
-Removing: 66
-Printing values:
----
-```
-
-#### TypeScript
-**Example:**
-[jsfiddle link](https://jsfiddle.net/Lvxj67hz/)
-
-```typescript
-class LinkedListNode {
-    public value: number;
-    public next: LinkedListNode;
-}
-
-class LinkedList {
-    public head: LinkedListNode;
-
-    public insert(value: number): void {
-        console.log(`Inserting: ${value}`);
-
-        let iteratingHead = this.head;
-
-        if (iteratingHead != null) {
-            while (iteratingHead.next != null) {
-                iteratingHead = iteratingHead.next;
-            }
-
-            iteratingHead.next = new LinkedListNode();
-            iteratingHead.next.value = value;
-        } else {
-            this.head = new LinkedListNode();
-            this.head.value = value;
-        }
-    }
-
-    public remove(value: number): void {
-        console.log(`Removing: ${value}`);
-
-        let iteratingHead = this.head;
-
-        if (iteratingHead != null) {
-            let lastNode = iteratingHead;
-
-            while (iteratingHead.next != null && iteratingHead.next.value === value) {
-                lastNode = iteratingHead;
-                iteratingHead = iteratingHead.next;
-            }
-
-            if (iteratingHead.value === value) {
-                if (iteratingHead.next != null) {
-                    lastNode.value = null;
-                    lastNode.next = iteratingHead.next;
-                } else {
-                    lastNode.next = null;
-                }
-            }
-        } else {
-            console.log("It looks like list is not initilezed yet.");
-        }
-    }
-
-    public printAll(): void {
-        console.log("Printing values:");
-
-        let iteratingHead = this.head;
-
-        if (iteratingHead != null) {
-            while (iteratingHead.next != null) {
-                if (iteratingHead.value != null) {
-                    console.log(iteratingHead.value);
-                }
-
-                iteratingHead = iteratingHead.next;
-            }
-
-            if (iteratingHead.value != null) {
-                console.log(iteratingHead.value);
-            }
-        } else {
-            console.log("List is empty.");
-        }
-
-        console.log("---");
-    }
-}
-
-const list = new LinkedList();
-list.printAll();
-
-list.insert(22);
-list.insert(33);
-list.insert(44);
-list.insert(55);
-list.insert(66);
-
-list.printAll();
-
-list.remove(33);
-list.remove(66);
-
-list.printAll();
-
-list.remove(22);
-list.remove(44);
-list.remove(55);
-list.remove(66);
-
-list.printAll();
-```
-
-##### Output:
-```
-Printing values:
-List is empty.
----
-Inserting: 22
-Inserting: 33
-Inserting: 44
-Inserting: 55
-Inserting: 66
-Printing values:
-22
-33
-44
-55
-66
----
-Removing: 33
-Removing: 66
-Printing values:
-44
-55
-66
----
-Removing: 22
-Removing: 44
-Removing: 55
-Removing: 66
-Printing values:
----
 ```
 
 </details>
