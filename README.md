@@ -291,6 +291,281 @@ Printing values:
 
 </details>
 
+## Queue
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)):
+> In computer science, a queue is a collection in which the entities in the collection are kept in order and the principal (or only) operations on the collection are the addition of entities to the rear terminal position, known as enqueue, and removal of entities from the front terminal position, known as dequeue. This makes the queue a First-In-First-Out (FIFO) data structure. In a FIFO data structure, the first element added to the queue will be the first one to be removed. This is equivalent to the requirement that once a new element is added, all elements that were added before have to be removed before the new element can be removed. Often a peek or front operation is also entered, returning the value of the front element without dequeuing it. A queue is an example of a linear data structure, or more abstractly a sequential collection.
+
+| Data Structure     | Time Complexity |        |           |          |        |         |           |          | Space Complexity |
+| ------------------ |----------------:| ------:|----------:|---------:|-------:|--------:|----------:|---------:|-----------------:|
+|                    | Average         |        |           |          | Worst  |         |           |          | Worst            |
+|                    | Access          | Search | Insertion | Deletion | Access | Search  | Insertion | Deletion |                  |
+| Queue                | Θ(n)          | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)    | O(1)      | O(1)     | O(n)             |
+
+<details>
+
+### Real world example
+> ?
+
+### Swift
+
+**Example:**
+```swift
+import Foundation
+
+class QNode {
+    var value: Int?
+    var next: QNode?
+}
+
+class Queue {
+    var head: QNode?
+    var tail: QNode?
+
+    func enqueue(value: Int) {
+        print("Enqueing: \(value)")
+
+        let node = QNode()
+        node.value = value
+
+        if tail == nil && head == nil {
+            head = node
+            tail = node
+        } else {
+            tail?.next = node
+            tail = node
+        }
+
+//        OR
+//        if tail == nil {
+//            tail = node
+//
+//            if head == nil {
+//                head = tail
+//            }
+//        }
+//        else {
+//            tail?.next = node
+//            tail = node
+//        }
+    }
+
+    func dequeue() -> Int? {
+        print("Dequeing")
+
+        if let iteratingHead = head {
+            head = iteratingHead.next
+
+            if iteratingHead.next == nil {
+                tail = nil
+            }
+
+            return iteratingHead.value
+        }
+        else {
+            print("It looks like queue is not initilezed yet.")
+            return nil
+        }
+    }
+
+    func printAll() {
+        print("Printing values:")
+
+        if var iteratingHead = self.head {
+            while iteratingHead.next != nil {
+                print(iteratingHead.value ?? 0)
+                iteratingHead = iteratingHead.next!
+            }
+            print(iteratingHead.value ?? 0)
+        } else {
+            print("Queue is empty.")
+        }
+
+        print("---")
+    }
+}
+
+let q = Queue()
+q.enqueue(value: 11)
+q.enqueue(value: 22)
+q.enqueue(value: 33)
+q.enqueue(value: 44)
+q.enqueue(value: 55)
+
+q.printAll()
+
+q.dequeue()
+q.dequeue()
+
+q.printAll()
+
+q.dequeue()
+q.dequeue()
+q.dequeue()
+q.dequeue()
+
+q.printAll()
+```
+
+#### Output:
+```
+Enqueing: 11
+Enqueing: 22
+Enqueing: 33
+Enqueing: 44
+Enqueing: 55
+Printing values:
+11
+22
+33
+44
+55
+---
+Dequeing
+Dequeing
+Printing values:
+33
+44
+55
+---
+Dequeing
+Dequeing
+Dequeing
+Dequeing
+It looks like queue is not initilezed yet.
+Printing values:
+Queue is empty.
+---
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/2u6xk3hz/)
+
+```typescript
+class QNode {
+    public value: number;
+    public next: QNode;
+}
+
+class Queue {
+    public head: QNode;
+    public tail: QNode;
+
+    public enqueue(value: number): void {
+        console.log(`Enqueing: ${value}`)
+
+        const node = new QNode();
+        node.value = value;
+
+        if (this.tail == null && this.head == null) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.tail.next = node;
+            this.tail = node;
+        }
+    }
+
+    public dequeue(): number {
+        console.log("Dequeing");
+
+        let iteratingHead = this.head;
+
+        if (iteratingHead != null) {
+            this.head = iteratingHead.next;
+
+            if (iteratingHead.next == null) {
+                this.tail = null;
+            }
+
+            return iteratingHead.value;
+        } else {
+            console.log("It looks like queue is not initilezed yet.");
+            return 0;
+        }
+    }
+
+    public printAll(): void {
+        console.log("Printing values:");
+
+        let iteratingHead = this.head;
+
+        if (iteratingHead != null) {
+            while (iteratingHead.next != null) {
+                if (iteratingHead.value != null) {
+                    console.log(iteratingHead.value);
+                }
+
+                iteratingHead = iteratingHead.next;
+            }
+
+            if (iteratingHead.value != null) {
+                console.log(iteratingHead.value);
+            }
+        } else {
+            console.log("Queue is empty.");
+        }
+
+        console.log("---");
+    }
+}
+
+let q = new Queue();
+q.enqueue(11);
+q.enqueue(22);
+q.enqueue(33);
+q.enqueue(44);
+q.enqueue(55);
+
+q.printAll();
+
+q.dequeue();
+q.dequeue();
+
+q.printAll();
+
+q.dequeue();
+q.dequeue();
+q.dequeue();
+q.dequeue();
+
+q.printAll();
+```
+
+#### Output:
+```
+Enqueing: 11
+Enqueing: 22
+Enqueing: 33
+Enqueing: 44
+Enqueing: 55
+Printing values:
+11
+22
+33
+44
+55
+---
+Dequeing
+Dequeing
+Printing values:
+33
+44
+55
+---
+Dequeing
+Dequeing
+Dequeing
+Dequeing
+It looks like queue is not initilezed yet.
+Printing values:
+Queue is empty.
+---
+```
+
+</details>
+
 # Design patterns
 
 ## Structural
