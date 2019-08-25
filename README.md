@@ -878,5 +878,8 @@ Printing values:
 - https://github.com/rust-unofficial/patterns
 - https://github.com/tcorral/Design-Patterns-in-Javascript
 
+### Resources:
+- https://en.wikipedia.org/wiki/Search_data_structure
+
 
 Made with ❤️ by [Dots and Spaces](http://dots-n-spaces.com).
