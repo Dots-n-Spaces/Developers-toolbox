@@ -568,6 +568,160 @@ Queue is empty.
 
 </details>
 
+## 🥞 Stack
+
+![Stack Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lifo_stack.png/350px-Lifo_stack.png "Stack Data Structure")
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)):
+> In computer science, a stack is an abstract data type that serves as a collection of elements, with two principal operations:
+> - push, which adds an element to the collection, and
+> - pop, which removes the most recently added element that was not yet removed.
+
+> The order in which elements come off a stack gives rise to its alternative name, LIFO (last in, first out). Additionally, a peek operation may give access to the top without modifying the stack. The name "stack" for this type of structure comes from the analogy to a set of physical items stacked on top of each other, which makes it easy to take an item off the top of the stack, while getting to an item deeper in the stack may require taking off multiple other items first.
+
+> Considered as a linear data structure, or more abstractly a sequential collection, the push and pop operations occur only at one end of the structure, referred to as the top of the stack. This makes it possible to implement a stack as a singly linked list and a pointer to the top element. A stack may be implemented to have a bounded capacity. If the stack is full and does not contain enough space to accept an entity to be pushed, the stack is then considered to be in an overflow state. The pop operation removes an item from the top of the stack.
+
+| Data Structure     | Time Complexity |        |           |          |        |         |           |          | Space Complexity |
+| ------------------ |----------------:| ------:|----------:|---------:|-------:|--------:|----------:|---------:|-----------------:|
+|                    | Average         |        |           |          | Worst  |         |           |          | Worst            |
+|                    | Access          | Search | Insertion | Deletion | Access | Search  | Insertion | Deletion |                  |
+| Stack              | Θ(n)            | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)    | O(1)      | O(1)     | O(n)             |
+
+<details>
+
+### Real world example
+> ?
+
+### Swift
+
+**Example:**
+```swift
+class Stack {
+    var stackArray = [String]()
+
+    func push(val: String) {
+        self.stackArray.append(val)
+    }
+
+    func pop() -> String? {
+        if self.stackArray.last != nil {
+            return self.stackArray.removeLast()
+        }
+        else{
+            return "Stack is empty."
+        }
+    }
+
+    func printValues() {
+        print(stackArray)
+    }
+}
+
+let stack = Stack()
+stack.push(val: "1")
+stack.push(val: "2")
+stack.push(val: "2")
+stack.push(val: "2")
+stack.push(val: "3")
+stack.push(val: "2")
+stack.push(val: "1")
+
+stack.printValues()
+
+print(stack.pop() as Any)
+print(stack.pop() as Any)
+
+stack.printValues()
+
+print(stack.pop() as Any)
+print(stack.pop() as Any)
+print(stack.pop() as Any)
+print(stack.pop() as Any)
+print(stack.pop() as Any)
+print(stack.pop() as Any)
+
+```
+
+#### Output:
+```
+["1", "2", "2", "2", "3", "2", "1"]
+Optional("1")
+Optional("2")
+["1", "2", "2", "2", "3"]
+Optional("3")
+Optional("2")
+Optional("2")
+Optional("2")
+Optional("1")
+Optional("Stack is empty.")
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/z40huejy/)
+
+```typescript
+class Stack {
+    private stackArray: string[] = [];
+
+    public push(val: string): void {
+        this.stackArray.push(val);
+    }
+
+    public pop(): string {
+        if (this.stackArray.length !== 0) {
+            return this.stackArray.splice(this.stackArray.length-1, 1)[0];
+        }
+        else{
+            return "Stack is empty";
+        }
+    }
+
+    public printValues(): void {
+        console.log(this.stackArray);
+    }
+}
+
+let stack = new Stack();
+stack.push("1");
+stack.push("2");
+stack.push("2");
+stack.push("2");
+stack.push("3");
+stack.push("2");
+stack.push("1");
+
+stack.printValues();
+
+console.log(stack.pop());
+console.log(stack.pop());
+
+stack.printValues();
+
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+```
+
+#### Output:
+```
+[ '1', '2', '2', '2', '3', '2', '1' ]
+1
+2
+[ '1', '2', '2', '2', '3' ]
+3
+2
+2
+2
+1
+Stack is empty
+```
+
+</details>
+
 # Design patterns
 
 ## Behaviour
