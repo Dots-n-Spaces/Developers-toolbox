@@ -759,6 +759,217 @@ Is user authorized: false. User id is: nil.
 
 </details>
 
+### 📒 Template Method
+
+Define the basic steps of an algorithm and allow the implementation of the individual steps to be changed.
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Template_method_pattern):
+> The template method is a method in a superclass, usually an abstract superclass, and defines the skeleton of an operation in terms of a number of high-level steps. These steps are themselves implemented by additional helper methods in the same class as the template method. The helper methods may be either abstract methods, for which case subclasses are required to provide concrete implementations, or hook methods, which have empty bodies in the superclass. Subclasses can (but are not required to) customize the operation by overriding the hook methods. The intent of the template method is to define the overall structure of the operation, while allowing subclasses to refine, or redefine, certain steps.
+
+<details>
+
+#### Real world example
+> Suppose we are getting some house built. The steps for building might look like: Prepare the base of house -> Build the walls ->  Add roof ->  Add other floors.
+
+#### Demo example
+> A flag drawing application: where skeleton class knows how abstractly to draw a 3 color flags, and subclasses know detailed line drawing implementation.
+
+##### Swift
+```swift
+// Define a template method that contains a skeleton of some algorithm, composed of calls to (usually) primitive operations.
+protocol TreeColorFlag {
+
+    // The template method defines the skeleton of an algorithm.
+    func draw()
+
+    // These operations have to be implemented in subclasses.
+    func drawFirstPart()
+    func drawSecondPart()
+    func drawThirdPart()
+}
+
+extension TreeColorFlag {
+
+    func draw() {
+        log(message: "Starting drawing")
+        drawFirstPart();
+        log(message: "First part is done.")
+        drawSecondPart();
+        log(message: "Second part is done.")
+        drawThirdPart();
+        log(message: "Third part is done.")
+    }
+
+    func log(message: String) {
+        print(message)
+    }
+
+    func drawFirstPart() {
+        fatalError("Subclass must implement drawFirstPart")
+    }
+
+    func drawSecondPart() {
+        fatalError("Subclass must implement drawSecondPart")
+    }
+
+    func drawThirdPart() {
+        fatalError("Subclass must implement drawThirdPart")
+    }
+}
+
+// Concrete classes have to implement all needed operations of the base
+// class. They can also override some operations with a default implementation.
+class FrenchFlag: TreeColorFlag {
+    func drawFirstPart() {
+        print("FrenchFlag says: Implemented Operation1")
+    }
+
+    func drawSecondPart() {
+        print("FrenchFlag says: Implemented drawSecondPart")
+    }
+
+    func drawThirdPart() {
+        print("FrenchFlag says: Implemented drawThirdPart")
+    }
+}
+
+class GermanFlag: TreeColorFlag {
+    func drawFirstPart() {
+        print("FrenchFlag says: Implemented Operation1")
+    }
+
+    func drawSecondPart() {
+        print("FrenchFlag says: Implemented drawSecondPart")
+    }
+
+    func drawThirdPart() {
+        print("FrenchFlag says: Implemented drawThirdPart")
+    }
+}
+
+print("Drawing French 🇫🇷 flag")
+FrenchFlag().draw()
+
+print("Drawing German 🇩🇪 flag")
+GermanFlag().draw()
+```
+
+##### Output:
+```
+Drawing French 🇫🇷 flag
+Starting drawing
+FrenchFlag says: Implemented Operation1
+First part is done.
+FrenchFlag says: Implemented drawSecondPart
+Second part is done.
+FrenchFlag says: Implemented drawThirdPart
+Third part is done.
+Drawing German 🇩🇪 flag
+Starting drawing
+FrenchFlag says: Implemented Operation1
+First part is done.
+FrenchFlag says: Implemented drawSecondPart
+Second part is done.
+FrenchFlag says: Implemented drawThirdPart
+Third part is done.
+```
+
+#### TypeScript
+[jsfiddle link](https://jsfiddle.net/vwz4ca3y/)
+```typescript
+// Define a template method that contains a skeleton of some algorithm, composed of calls to (usually) primitive operations.
+class TreeColorFlag {
+
+    // The template method defines the skeleton of an algorithm.
+    draw(): void {
+        this.log("Starting drawing");
+
+        this.drawFirstPart();
+        this.log("First part is done.");
+
+        this.drawSecondPart();
+        this.log("Second part is done.");
+
+        this.drawThirdPart();
+        this.log("Third part is done.");
+    }
+
+    log(message: String): void {
+        console.log(message);
+    }
+
+    // These operations have to be implemented in subclasses.
+    drawFirstPart(): void {
+        throw new Error("Subclass must implement drawFirstPart");
+    }
+
+    drawSecondPart(): void {
+        throw new Error("Subclass must implement drawSecondPart");
+    }
+
+    drawThirdPart(): void {
+        throw new Error("Subclass must implement drawThirdPart");
+    }
+}
+
+// Concrete classes have to implement all needed operations of the base
+// class. They can also override some operations with a default implementation.
+class FrenchFlag extends TreeColorFlag {
+    drawFirstPart(): void {
+        console.log("FrenchFlag says: Implemented Operation1")
+    }
+
+    drawSecondPart(): void {
+        console.log("FrenchFlag says: Implemented drawSecondPart")
+    }
+
+    drawThirdPart(): void {
+        console.log("FrenchFlag says: Implemented drawThirdPart")
+    }
+}
+
+class GermanFlag extends TreeColorFlag {
+    drawFirstPart(): void {
+        console.log("FrenchFlag says: Implemented Operation1")
+    }
+
+    drawSecondPart(): void {
+        console.log("FrenchFlag says: Implemented drawSecondPart")
+    }
+
+    drawThirdPart(): void {
+        console.log("FrenchFlag says: Implemented drawThirdPart")
+    }
+}
+
+console.log("Drawing French 🇫🇷 flag");
+new FrenchFlag().draw();
+
+console.log("Drawing German 🇩🇪 flag");
+new GermanFlag().draw();
+```
+##### Output:
+```
+Drawing French 🇫🇷 flag
+Starting drawing
+FrenchFlag says: Implemented Operation1
+First part is done.
+FrenchFlag says: Implemented drawSecondPart
+Second part is done.
+FrenchFlag says: Implemented drawThirdPart
+Third part is done.
+Drawing German 🇩🇪 flag
+Starting drawing
+FrenchFlag says: Implemented Operation1
+First part is done.
+FrenchFlag says: Implemented drawSecondPart
+Second part is done.
+FrenchFlag says: Implemented drawThirdPart
+Third part is done.
+```
+
+</details>
+
 ## Structural
 
 ### 🔌 Adapter
