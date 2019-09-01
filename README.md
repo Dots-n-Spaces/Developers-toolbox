@@ -1150,6 +1150,15 @@ Hi!
 
 <hr />
 
+# Build/Run/Debug/Test
+## TypeScript
+In order to run/debug typescript examples run `tsc -w` from root of the project. And then run `node filesname.js` to see output in console. Or user jsfiddle link to run in a browser.
+
+## Swift
+Open playground in Xcode and run it there.
+
+<hr />
+
 ### Inspired by:
 - https://github.com/kamranahmedse/design-patterns-for-humans
 - https://github.com/DovAmir/awesome-design-patterns
