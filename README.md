@@ -570,6 +570,195 @@ Queue is empty.
 
 # Design patterns
 
+## Behaviour
+
+### 💢 State
+
+It lets you change the behavior of a class when the state changes.
+
+[Wikipedia says](https://en.wikipedia.org/wiki/State_pattern):
+> The state pattern is a behavioral software design pattern that allows an object to alter its behavior when its internal state changes. This pattern is close to the concept of finite-state machines. The state pattern can be interpreted as a strategy pattern, which is able to switch a strategy through invocations of methods defined in the pattern's interface.
+
+<details>
+
+#### Real world example
+> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.
+
+#### Demo example
+> Authorization system that depending on the state will have user as authorized or unauthorized.
+
+##### Swift
+```swift
+final class Context {
+    private var state: State = UnauthorizedState()
+
+    var isAuthorized: Bool {
+        get {
+            return state.isAuthorized(context: self)
+        }
+    }
+
+    var userId: String? {
+        get {
+            return state.userId(context: self)
+        }
+    }
+
+    func changeStateToAuthorized(userId: String) {
+        state = AuthorizedState(userId: userId)
+    }
+
+    func changeStateToUnauthorized() {
+        state = UnauthorizedState()
+    }
+
+    func printAuthorizationStatus() {
+        print("Is user authorized: \(userContext.isAuthorized). User id is: \(String(describing: userContext.userId)).")
+    }
+}
+
+protocol State {
+    func isAuthorized(context: Context) -> Bool
+    func userId(context: Context) -> String?
+}
+
+class UnauthorizedState: State {
+    func isAuthorized(context: Context) -> Bool {
+        return false
+    }
+
+    func userId(context: Context) -> String? {
+        return nil
+    }
+}
+
+class AuthorizedState: State {
+    let userId: String
+
+    init(userId: String) {
+        self.userId = userId
+    }
+
+    func isAuthorized(context: Context) -> Bool {
+        return true
+    }
+
+    func userId(context: Context) -> String? {
+        return userId
+    }
+}
+
+let userContext = Context()
+// initial state
+userContext.printAuthorizationStatus()
+
+// authorizing as admin
+userContext.changeStateToAuthorized(userId: "admin")
+
+// now logged in as "admin"
+userContext.printAuthorizationStatus()
+
+// unauthorizing
+userContext.changeStateToUnauthorized()
+
+// now logged out
+userContext.printAuthorizationStatus()
+
+```
+##### Output:
+```
+Is user authorized: false. User id is: nil.
+Is user authorized: true. User id is: Optional("admin").
+Is user authorized: false. User id is: nil.
+```
+
+#### TypeScript
+[jsfiddle link](https://jsfiddle.net/oksdv734/)
+```typescript
+class Context {
+    private state: State = new UnauthorizedState();
+
+    private _isAuthorized: boolean;
+
+    get isAuthorized(): boolean {
+        return this.state.isAuthorized(this);
+    }
+
+    private _userId: string;
+
+    get userId(): string {
+        return this.state.getUserId(this);
+    }
+
+    public changeStateToAuthorized(userId: string) {
+        this.state = new AuthorizedState(userId);
+    }
+
+    public changeStateToUnauthorized() {
+        this.state = new UnauthorizedState();
+    }
+
+    public printAuthorizationStatus() {
+        console.log(`Is user authorized: ${this.isAuthorized}. User id is: ${this.userId}.`);
+    }
+}
+
+interface State {
+    isAuthorized(context: Context): boolean;
+    getUserId(context: Context): string;
+}
+
+class UnauthorizedState implements State {
+    public isAuthorized(context: Context): boolean {
+        return false;
+    }
+
+    public getUserId(context: Context): string {
+        return `nil`;
+    }
+}
+
+class AuthorizedState implements State {
+    private userId: string;
+
+    constructor(userId: string) {
+        this.userId = userId
+    }
+
+    public isAuthorized(context: Context): boolean {
+        return true;
+    }
+
+    public getUserId(context: Context): string {
+        return this.userId;
+    }
+}
+
+let userContext = new Context();
+// initial state
+userContext.printAuthorizationStatus();
+
+// authorizing as admin
+userContext.changeStateToAuthorized("admin");
+
+// now logged in as "admin"
+userContext.printAuthorizationStatus();
+
+// unauthorizing
+userContext.changeStateToUnauthorized();
+
+// now logged out
+userContext.printAuthorizationStatus();
+```
+##### Output:
+```
+Is user authorized: false. User id is: nil.
+Is user authorized: true. User id is: admin.
+Is user authorized: false. User id is: nil.
+```
+
+</details>
+
 ## Structural
 
 ### 🔌 Adapter
