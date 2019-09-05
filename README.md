@@ -1145,6 +1145,8 @@ Third part is done.
 ```
 
 </details>
+    
+</details>
 
 ## Structural
 
