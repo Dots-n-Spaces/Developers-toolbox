@@ -3,10 +3,10 @@ Toolbox of software data structures, design patterns, algorithms and typical pro
 
 # Data Structures
 ## 🔗 Linked List
-
-<details>
     
 ![Linked List Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/408px-Singly-linked-list.svg.png "Linked List Data Structure")
+
+<details>
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Linked_list):
 > In computer science, a Linked list is a linear collection of data elements, whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration
@@ -298,10 +298,10 @@ Printing values:
 </details>
 
 ## 🐜🐜🐜 Queue
-
-<details>
     
 ![Queue Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/300px-Data_Queue.svg.png "Queue Data Structure")
+
+<details>
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)):
 > In computer science, a queue is a collection in which the entities in the collection are kept in order and the principal (or only) operations on the collection are the addition of entities to the rear terminal position, known as enqueue, and removal of entities from the front terminal position, known as dequeue. This makes the queue a First-In-First-Out (FIFO) data structure. In a FIFO data structure, the first element added to the queue will be the first one to be removed. This is equivalent to the requirement that once a new element is added, all elements that were added before have to be removed before the new element can be removed. Often a peek or front operation is also entered, returning the value of the front element without dequeuing it. A queue is an example of a linear data structure, or more abstractly a sequential collection.
@@ -581,11 +581,11 @@ Queue is empty.
 </details>
 
 ## 🥞 Stack
-
-<details>
     
 ![Stack Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lifo_stack.png/350px-Lifo_stack.png "Stack Data Structure")
 
+<details>
+    
 [Wikipedia says](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)):
 > In computer science, a stack is an abstract data type that serves as a collection of elements, with two principal operations:
 > - push, which adds an element to the collection, and
@@ -743,10 +743,10 @@ Stack is empty
 ## Behaviour
 
 ### 💢 State
-
-<details>
     
 It lets you change the behavior of a class when the state changes.
+
+<details>
 
 [Wikipedia says](https://en.wikipedia.org/wiki/State_pattern):
 > The state pattern is a behavioral software design pattern that allows an object to alter its behavior when its internal state changes. This pattern is close to the concept of finite-state machines. The state pattern can be interpreted as a strategy pattern, which is able to switch a strategy through invocations of methods defined in the pattern's interface.
@@ -934,10 +934,10 @@ Is user authorized: false. User id is: nil.
 </details>
 
 ### 📒 Template Method
-
-<details>
     
 Define the basic steps of an algorithm and allow the implementation of the individual steps to be changed.
+
+<details>
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Template_method_pattern):
 > The template method is a method in a superclass, usually an abstract superclass, and defines the skeleton of an operation in terms of a number of high-level steps. These steps are themselves implemented by additional helper methods in the same class as the template method. The helper methods may be either abstract methods, for which case subclasses are required to provide concrete implementations, or hook methods, which have empty bodies in the superclass. Subclasses can (but are not required to) customize the operation by overriding the hook methods. The intent of the template method is to define the overall structure of the operation, while allowing subclasses to refine, or redefine, certain steps.
@@ -1151,6 +1151,8 @@ Third part is done.
 ### 🔌 Adapter
 Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
 
+<details>
+
 [Wikipedia says](https://en.wikipedia.org/wiki/Adapter_pattern):
 > In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
 
@@ -1284,6 +1286,8 @@ Adapter: Connected.
 ### 🎁 Façade
 The facade pattern is used to define a simplified interface to a more complex subsystem.
 
+<details>
+
 [Wikipedia says](https://en.wikipedia.org/wiki/Facade_pattern):
 > Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
 
@@ -1409,12 +1413,16 @@ veryDifficultMethod of SystemC
 
 </details>
 
+</details>
+
 ## Creational
 
 ### 💉 Dependency Injection
 
 Instead of creating the dependency internally an object can receive it from the outside.
 
+<details>
+    
 [Wikipedia says](https://en.wikipedia.org/wiki/Dependency_injection):
 > In software engineering, dependency injection is a technique whereby one object supplies the dependencies of another object. A "dependency" is an object that can be used, for example as a service. Instead of a client specifying which service it will use, something tells the client what service to use. The "injection" refers to the passing of a dependency (a service) into the object (a client) that would use it. The service is made part of the client's state. Passing the service to the client, rather than allowing a client to build or find the service, is the fundamental requirement of the pattern.
 > The intent behind dependency injection is to achieve Separation of Concerns of construction and use of objects. This can increase readability and code reuse.
@@ -1517,9 +1525,13 @@ Vrrrooooommm!!
 ```
 
 </details>
+    
+</details>
 
 ### 🏭 Factory Method
 The factory pattern is used to replace class constructors, abstracting the process of object generation so that the type of the object instantiated can be determined at run-time.
+
+<details>
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Factory_method_pattern):
 > In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
@@ -1697,8 +1709,12 @@ console.log(`${currency2.getFlag()} ${currency2.getSymbol()}`);
 
 </details>
 
+</details>
+
 ### 🍾 Singleton
-Ensures a class has only one instance and provides a global point of access to it. Use cases: provide a unified access point to a resource or service that’s shared across an app/service, like an audio channel to play sound effects or a network manager to make HTTP requests.
+Ensures a class has only one instance and provides a global point of access to it.
+
+<details>
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Singleton_pattern):
 > In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
@@ -1830,6 +1846,8 @@ Initialized.
 0.8771180249127926
 Hi!
 ```
+
+</details>
 
 </details>
 
