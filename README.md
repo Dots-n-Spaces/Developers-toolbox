@@ -1261,6 +1261,109 @@ Adapter: Connected.
 
 </details>
 
+### 👩‍💼 👉 👷🔨 Delegation
+Delegation is a design pattern that enables a class to hand off (or “delegate”) some of its responsibilities to an instance of another class.
+
+<details>
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Delegation_pattern):
+> In delegation, an object handles a request by delegating to a second object (the delegate). The delegate is a helper object, but with the original context. With language-level support for delegation, this is done implicitly by having self in the delegate refer to the original (sending) object, not the delegate (receiving object). In the delegate pattern, this is instead accomplished by explicitly passing the original object to the delegate, as an argument to a method. Note that "delegation" is often used loosely to refer to the distinct concept of forwarding, where the sending object simply uses the corresponding member on the receiving object, evaluated in the context of the receiving object, not the original object.
+
+#### Demo example
+> Cookie shop should sell cookies, where Bakery should bake cookies.
+
+##### Swift
+```swift
+struct Cookie {
+    var size = 5
+    var hasChocolateChips = false
+}
+
+// Setup delegate protocol
+protocol BakeryDelegate {
+    func bakeCookies(cookie: Cookie)
+}
+
+// Implementation of the delegation
+class Bakery: BakeryDelegate {
+    func bakeCookies(cookie: Cookie) {
+        print("Yay! A new cookie was baked, with size \(cookie.size).")
+    }
+}
+
+class CookieShop {
+    var delegate: BakeryDelegate
+
+    init(delegate: BakeryDelegate) {
+        self.delegate = delegate
+    }
+
+    func buy(cookies: Int) {
+        var cookie = Cookie()
+        cookie.size = cookies
+        cookie.hasChocolateChips = true
+
+        delegate.bakeCookies(cookie: cookie)
+    }
+}
+
+let bakery = Bakery()
+let shop = CookieShop(delegate: bakery)
+
+shop.buy(cookies: 6)
+```
+
+##### Output:
+```
+Yay! A new cookie was baked, with size 6.
+```
+
+#### TypeScript
+[jsfiddle link](https://jsfiddle.net/vs78pcx5/1/)
+```typescript
+class Cookie {
+    public size = 5;
+    public hasChocolateChips = false;
+}
+
+// Setup delegate interface
+interface BakeryDelegate {
+    bakeCookies(cookie: Cookie): void;
+}
+
+// Implementation of the delegation
+class Bakery implements BakeryDelegate {
+    bakeCookies(cookie: Cookie): void {
+        console.log(`Yay! A new cookie was baked, with size ${cookie.size}.`);
+    }
+}
+
+class CookieShop {
+    constructor(private delegate: BakeryDelegate) {
+    }
+
+    buy(cookies: number): void {
+        const cookie = new Cookie();
+        cookie.size = cookies;
+        cookie.hasChocolateChips = true;
+
+        this.delegate.bakeCookies(cookie);
+    }
+}
+
+const bakery = new Bakery();
+const shop = new CookieShop(bakery);
+
+shop.buy(6);
+```
+
+##### Output:
+```
+Yay! A new cookie was baked, with size 6.
+```
+
+</details>
+
 ### 🎁 Façade
 The facade pattern is used to define a simplified interface to a more complex subsystem.
 
