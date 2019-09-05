@@ -4,6 +4,8 @@ Toolbox of software data structures, design patterns, algorithms and typical pro
 # Data Structures
 ## 🔗 Linked List
 
+<details>
+    
 ![Linked List Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/408px-Singly-linked-list.svg.png "Linked List Data Structure")
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Linked_list):
@@ -293,8 +295,12 @@ Printing values:
 
 </details>
 
+</details>
+
 ## 🐜🐜🐜 Queue
 
+<details>
+    
 ![Queue Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/300px-Data_Queue.svg.png "Queue Data Structure")
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)):
@@ -572,8 +578,12 @@ Queue is empty.
 
 </details>
 
+</details>
+
 ## 🥞 Stack
 
+<details>
+    
 ![Stack Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lifo_stack.png/350px-Lifo_stack.png "Stack Data Structure")
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)):
@@ -726,12 +736,16 @@ Stack is empty
 
 </details>
 
+</details>
+
 # Design patterns
 
 ## Behaviour
 
 ### 💢 State
 
+<details>
+    
 It lets you change the behavior of a class when the state changes.
 
 [Wikipedia says](https://en.wikipedia.org/wiki/State_pattern):
@@ -917,8 +931,12 @@ Is user authorized: false. User id is: nil.
 
 </details>
 
+</details>
+
 ### 📒 Template Method
 
+<details>
+    
 Define the basic steps of an algorithm and allow the implementation of the individual steps to be changed.
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Template_method_pattern):
@@ -1258,6 +1276,8 @@ Adapter: Connecting...
 Adapee: Forbundet.
 Adapter: Connected.
 ```
+
+</details>
 
 </details>
 
