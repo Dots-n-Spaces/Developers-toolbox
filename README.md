@@ -3,7 +3,7 @@ Toolbox of software data structures, design patterns, algorithms and typical pro
 
 # Data Structures
 ## 🔗 Linked List
-    
+
 ![Linked List Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/408px-Singly-linked-list.svg.png "Linked List Data Structure")
 
 <details>
@@ -294,7 +294,7 @@ Printing values:
 </details>
 
 ## 🐜🐜🐜 Queue
-    
+
 ![Queue Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/300px-Data_Queue.svg.png "Queue Data Structure")
 
 <details>
@@ -573,11 +573,11 @@ Queue is empty.
 </details>
 
 ## 🥞 Stack
-    
+
 ![Stack Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lifo_stack.png/350px-Lifo_stack.png "Stack Data Structure")
 
 <details>
-    
+
 [Wikipedia says](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)):
 > In computer science, a stack is an abstract data type that serves as a collection of elements, with two principal operations:
 > - push, which adds an element to the collection, and
@@ -731,7 +731,7 @@ Stack is empty
 ## Behaviour
 
 ### 💢 State
-    
+
 It lets you change the behavior of a class when the state changes.
 
 <details>
@@ -918,7 +918,7 @@ Is user authorized: false. User id is: nil.
 </details>
 
 ### 📒 Template Method
-    
+
 Define the basic steps of an algorithm and allow the implementation of the individual steps to be changed.
 
 <details>
@@ -1125,7 +1125,7 @@ Second part is done.
 FrenchFlag says: Implemented drawThirdPart
 Third part is done.
 ```
-    
+
 </details>
 
 ## Structural
@@ -1499,7 +1499,7 @@ veryDifficultMethod of SystemC
 Instead of creating the dependency internally an object can receive it from the outside.
 
 <details>
-    
+
 [Wikipedia says](https://en.wikipedia.org/wiki/Dependency_injection):
 > In software engineering, dependency injection is a technique whereby one object supplies the dependencies of another object. A "dependency" is an object that can be used, for example as a service. Instead of a client specifying which service it will use, something tells the client what service to use. The "injection" refers to the passing of a dependency (a service) into the object (a client) that would use it. The service is made part of the client's state. Passing the service to the client, rather than allowing a client to build or find the service, is the fundamental requirement of the pattern.
 > The intent behind dependency injection is to achieve Separation of Concerns of construction and use of objects. This can increase readability and code reuse.
@@ -1598,7 +1598,7 @@ car2.forward();
 Vrrrooooommm!!
 3-2-1... LIFT OFF!!!
 ```
-    
+
 </details>
 
 ### 🏭 Factory Method
