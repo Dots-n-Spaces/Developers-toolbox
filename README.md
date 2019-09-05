@@ -18,8 +18,6 @@ Toolbox of software data structures, design patterns, algorithms and typical pro
 | Singly-Linked List | Θ(n)            | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)    | O(1)      | O(1)     | O(n)             |
 | Doubly-Linked List | Θ(n)            | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)    | O(1)      | O(1)     | O(n)             |
 
-<details>
-
 ### Real world example
 > Consider the history section of web browsers, where it creates a linked list of web-pages visited, so that when you check history (traversal of a list) or press back button, the previous node's data is fetched.
 
@@ -295,8 +293,6 @@ Printing values:
 
 </details>
 
-</details>
-
 ## 🐜🐜🐜 Queue
     
 ![Queue Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/300px-Data_Queue.svg.png "Queue Data Structure")
@@ -311,8 +307,6 @@ Printing values:
 |                    | Average         |        |           |          | Worst  |         |           |          | Worst            |
 |                    | Access          | Search | Insertion | Deletion | Access | Search  | Insertion | Deletion |                  |
 | Queue                | Θ(n)          | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)    | O(1)      | O(1)     | O(n)             |
-
-<details>
 
 ### Real world example
 > Ticket counter line where people who come first will get his ticket first.
@@ -578,8 +572,6 @@ Queue is empty.
 
 </details>
 
-</details>
-
 ## 🥞 Stack
     
 ![Stack Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lifo_stack.png/350px-Lifo_stack.png "Stack Data Structure")
@@ -600,8 +592,6 @@ Queue is empty.
 |                    | Average         |        |           |          | Worst  |         |           |          | Worst            |
 |                    | Access          | Search | Insertion | Deletion | Access | Search  | Insertion | Deletion |                  |
 | Stack              | Θ(n)            | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)    | O(1)      | O(1)     | O(n)             |
-
-<details>
 
 ### Real world example
 > ?
@@ -736,8 +726,6 @@ Stack is empty
 
 </details>
 
-</details>
-
 # Design patterns
 
 ## Behaviour
@@ -750,8 +738,6 @@ It lets you change the behavior of a class when the state changes.
 
 [Wikipedia says](https://en.wikipedia.org/wiki/State_pattern):
 > The state pattern is a behavioral software design pattern that allows an object to alter its behavior when its internal state changes. This pattern is close to the concept of finite-state machines. The state pattern can be interpreted as a strategy pattern, which is able to switch a strategy through invocations of methods defined in the pattern's interface.
-
-<details>
 
 #### Real world example
 > Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.
@@ -931,8 +917,6 @@ Is user authorized: false. User id is: nil.
 
 </details>
 
-</details>
-
 ### 📒 Template Method
     
 Define the basic steps of an algorithm and allow the implementation of the individual steps to be changed.
@@ -941,8 +925,6 @@ Define the basic steps of an algorithm and allow the implementation of the indiv
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Template_method_pattern):
 > The template method is a method in a superclass, usually an abstract superclass, and defines the skeleton of an operation in terms of a number of high-level steps. These steps are themselves implemented by additional helper methods in the same class as the template method. The helper methods may be either abstract methods, for which case subclasses are required to provide concrete implementations, or hook methods, which have empty bodies in the superclass. Subclasses can (but are not required to) customize the operation by overriding the hook methods. The intent of the template method is to define the overall structure of the operation, while allowing subclasses to refine, or redefine, certain steps.
-
-<details>
 
 #### Real world example
 > Suppose we are getting some house built. The steps for building might look like: Prepare the base of house -> Build the walls ->  Add roof ->  Add other floors.
@@ -1143,8 +1125,6 @@ Second part is done.
 FrenchFlag says: Implemented drawThirdPart
 Third part is done.
 ```
-
-</details>
     
 </details>
 
@@ -1157,8 +1137,6 @@ Adapter pattern lets you wrap an otherwise incompatible object in an adapter to 
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Adapter_pattern):
 > In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
-
-<details>
 
 #### Real world example
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
@@ -1283,8 +1261,6 @@ Adapter: Connected.
 
 </details>
 
-</details>
-
 ### 🎁 Façade
 The facade pattern is used to define a simplified interface to a more complex subsystem.
 
@@ -1292,8 +1268,6 @@ The facade pattern is used to define a simplified interface to a more complex su
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Facade_pattern):
 > Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
-
-<details>
 
 ##### Swift
 ```swift
@@ -1415,8 +1389,6 @@ veryDifficultMethod of SystemC
 
 </details>
 
-</details>
-
 ## Creational
 
 ### 💉 Dependency Injection
@@ -1428,8 +1400,6 @@ Instead of creating the dependency internally an object can receive it from the 
 [Wikipedia says](https://en.wikipedia.org/wiki/Dependency_injection):
 > In software engineering, dependency injection is a technique whereby one object supplies the dependencies of another object. A "dependency" is an object that can be used, for example as a service. Instead of a client specifying which service it will use, something tells the client what service to use. The "injection" refers to the passing of a dependency (a service) into the object (a client) that would use it. The service is made part of the client's state. Passing the service to the client, rather than allowing a client to build or find the service, is the fundamental requirement of the pattern.
 > The intent behind dependency injection is to achieve Separation of Concerns of construction and use of objects. This can increase readability and code reuse.
-
-<details>
 
 #### Demo example
 > Consider the case of of creation of a car with different engines.
@@ -1525,8 +1495,6 @@ car2.forward();
 Vrrrooooommm!!
 3-2-1... LIFT OFF!!!
 ```
-
-</details>
     
 </details>
 
@@ -1537,8 +1505,6 @@ The factory pattern is used to replace class constructors, abstracting the proce
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Factory_method_pattern):
 > In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
-
-<details>
 
 #### Demo example
 > Consider the case of currency creation. Where we want to create a currency object depending on the country.
@@ -1711,8 +1677,6 @@ console.log(`${currency2.getFlag()} ${currency2.getSymbol()}`);
 
 </details>
 
-</details>
-
 ### 🍾 Singleton
 Ensures a class has only one instance and provides a global point of access to it.
 
@@ -1720,8 +1684,6 @@ Ensures a class has only one instance and provides a global point of access to i
 
 [Wikipedia says](https://en.wikipedia.org/wiki/Singleton_pattern):
 > In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
-
-<details>
 
 #### Real world example
 > All database queries should be executed through only one connection.
