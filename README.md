@@ -1391,6 +1391,113 @@ veryDifficultMethod of SystemC
 
 ## Creational
 
+### 💉 Dependency Injection
+
+Instead of creating the dependency internally an object can receive it from the outside.
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Dependency_injection):
+> In software engineering, dependency injection is a technique whereby one object supplies the dependencies of another object. A "dependency" is an object that can be used, for example as a service. Instead of a client specifying which service it will use, something tells the client what service to use. The "injection" refers to the passing of a dependency (a service) into the object (a client) that would use it. The service is made part of the client's state. Passing the service to the client, rather than allowing a client to build or find the service, is the fundamental requirement of the pattern.
+> The intent behind dependency injection is to achieve Separation of Concerns of construction and use of objects. This can increase readability and code reuse.
+
+<details>
+
+#### Demo example
+> Consider the case of of creation of a car with different engines.
+
+#### Swift
+
+**Example:**
+```swift
+protocol Propulsion {
+    func move()
+}
+
+class Vehicle {
+    private let engine: Propulsion
+
+    init(engine: Propulsion) {
+        self.engine = engine
+    }
+
+    func forward() {
+        engine.move()
+    }
+}
+
+class RaceCarEngine: Propulsion {
+    func move() {
+        print("Vrrrooooommm!!")
+    }
+}
+
+class RocketEngine: Propulsion {
+    func move() {
+        print("3-2-1... LIFT OFF!!!")
+    }
+}
+
+let raceCarEngine = RaceCarEngine()
+let car = Vehicle(engine: raceCarEngine)
+car.forward()
+
+let rocketEngine = RocketEngine()
+let car2 = Vehicle(engine: rocketEngine)
+car2.forward()
+```
+
+##### Output:
+```
+Vrrrooooommm!!
+3-2-1... LIFT OFF!!!
+```
+
+#### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/59vgLrtc/)
+
+```typescript
+interface Propulsion {
+    move(): void;
+}
+
+class Vehicle {
+    constructor(private engine: Propulsion) {
+    }
+
+    forward(): void {
+        this.engine.move();
+    }
+}
+
+class RaceCarEngine implements Propulsion {
+    move(): void {
+        console.log("Vrrrooooommm!!");
+    }
+}
+
+class RocketEngine implements Propulsion {
+    move(): void {
+        console.log("3-2-1... LIFT OFF!!!");
+    }
+}
+
+const raceCarEngine = new RaceCarEngine();
+const car = new Vehicle(raceCarEngine);
+car.forward();
+
+const rocketEngine = new RocketEngine();
+const car2 = new Vehicle(rocketEngine);
+car2.forward();
+```
+
+##### Output:
+```
+Vrrrooooommm!!
+3-2-1... LIFT OFF!!!
+```
+
+</details>
+
 ### 🏭 Factory Method
 The factory pattern is used to replace class constructors, abstracting the process of object generation so that the type of the object instantiated can be determined at run-time.
 
