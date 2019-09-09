@@ -77,6 +77,80 @@ console.log(bubbleSort(numbers));
 
 </details>
 
+## 🔘 Selection Sort
+
+![Selection Sort](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif "Selection Sort")
+
+<details>
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Selection_sort):
+> Selection sort is an in-place comparison sort. It has O(n2) complexity, making it inefficient on large lists, and generally performs worse than the similar insertion sort. Selection sort is noted for its simplicity, and also has performance advantages over more complicated algorithms in certain situations.
+
+> The algorithm finds the minimum value, swaps it with the value in the first position, and repeats these steps for the remainder of the list. It does no more than n swaps, and thus is useful where swapping is very expensive.
+
+| Algorithm      | Time Complexity |         |           | Space Complexity |
+| -------------- |----------------:| -------:|----------:|-----------------:|
+| Selection sort | Ω(n^2)          | Θ(n^2)  | Θ(n^2)    | Θ(1        )     |
+
+### Swift
+
+**Example:**
+```swift
+func selectionSort(numbers: [Int]) -> [Int] {
+    var sortedNumbers = numbers
+
+    for i in 0..<sortedNumbers.count-1 {
+        var minIndex = i
+        for j in i..<sortedNumbers.count {
+            if sortedNumbers[j] < sortedNumbers[minIndex] {
+                minIndex = j
+            }
+        }
+
+        let temp = sortedNumbers[minIndex]
+        sortedNumbers[minIndex] = sortedNumbers[i]
+        sortedNumbers[i] = temp
+    }
+
+    return sortedNumbers
+}
+
+let numbers = [5, 15, 14, 1, 26, 0, 99]
+
+print(selectionSort(numbers: numbers))
+```
+
+#### Output:
+```
+[0, 1, 5, 14, 15, 26, 99]
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/oe2cm1fn/)
+
+```typescript
+function selectionSort(numbers: number[]): number[] {
+    let sortedNumbers = numbers;
+
+    for (let i = 0; i < sortedNumbers.length - 1; i++) {
+        let minValueIndex = i;
+
+        for (let j = i + 1; j < sortedNumbers.length; j++) {
+            if (sortedNumbers[j] < sortedNumbers[minValueIndex]) {
+                minValueIndex = j;
+            }
+        }
+            const temp = sortedNumbers[minValueIndex];
+            sortedNumbers[minValueIndex] = sortedNumbers[i];
+            sortedNumbers[i] = temp;
+    }
+
+    return sortedNumbers;
+}
+
+const unsortedArray = [5, 15, 14, 1, 26, 0, 99];
+console.log(selectionSort(unsortedArray));
 ```
 
 #### Output:
