@@ -77,6 +77,84 @@ console.log(bubbleSort(numbers));
 
 </details>
 
+## 🗳️ Insertion Sort
+
+![Insertion Sort](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif "Insertion Sort")
+
+<details>
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Insertion_sort):
+> Insertion sort is a simple sorting algorithm that is relatively efficient for small lists and mostly sorted lists, and is often used as part of more sophisticated algorithms. It works by taking elements from the list one by one and inserting them in their correct position into a new sorted list similar to how we put money in out wallet. In arrays, the new list and the remaining elements can share the array's space, but insertion is expensive, requiring shifting all following elements over by one. Shellsort (see below) is a variant of insertion sort that is more efficient for larger lists.
+
+| Algorithm      | Time Complexity |         |           | Space Complexity |
+| -------------- |----------------:| -------:|----------:|-----------------:|
+| Insertion Sort | Ω(n)            | Θ(n^2)  | Θ(n^2)    | Θ(1        )     |
+
+### Swift
+
+**Example:**
+```swift
+func insertionSort(numbers: [Int]) -> [Int] {
+    var sortedNumbers = numbers
+
+    for i in 0..<sortedNumbers.count {
+        let val = sortedNumbers[i]
+
+        for j in 0..<i {
+            if sortedNumbers[j] > sortedNumbers[i] {
+                sortedNumbers.remove(at: i)
+                sortedNumbers.insert(val, at: j)
+            }
+        }
+    }
+
+    return sortedNumbers
+}
+
+let numbers = [5, 15, 14, 1, 26, 0, 99]
+
+print(insertionSort(numbers: numbers))
+```
+
+#### Output:
+```
+[0, 1, 5, 14, 15, 26, 99]
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/1gj3bd87/)
+
+```typescript
+function insertionSort(numbers: number[]): number[] {
+    let sortedNumbers = numbers;
+
+    for (let i = 1; i < sortedNumbers.length; i++) {
+        let value = sortedNumbers[i];
+        let position = i;
+
+        while(position > 0 && sortedNumbers[position - 1] > value) {
+            numbers[position] = numbers[position - 1];
+            position -= 1;
+        }
+
+        numbers[position] = value;
+    }
+
+    return sortedNumbers;
+}
+
+const unsortedArray = [5, 15, 14, 1, 26, 0, 99];
+console.log(insertionSort(unsortedArray));
+```
+
+#### Output:
+```
+[ 0, 1, 5, 14, 15, 26, 99 ]
+```
+
+</details>
+
 ## 🔘 Selection Sort
 
 ![Selection Sort](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif "Selection Sort")
