@@ -1,6 +1,92 @@
 # 🧰 Developers-toolbox
 Toolbox of software data structures, design patterns, algorithms and typical problems. Repo includes swift and typescript examples (add other languages if you feel so). Part of Develepor's toolbox series: [link](https://medium.com/dots-and-spaces).
 
+# Algorithms
+
+## Sorting
+
+## 🛁 Bubble Sort
+
+![Bubble Sort](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif "Bubble Sort")
+
+<details>
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Bubble_sort):
+> Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. The algorithm, which is a comparison sort, is named for the way smaller or larger elements "bubble" to the top of the list. Although the algorithm is simple, it is too slow and impractical for most problems even when compared to insertion sort. Bubble sort can be practical if the input is in mostly sorted order with some out-of-order elements nearly in position.
+
+| Algorithm     | Time Complexity |         |           | Space Complexity |
+| ------------- |----------------:| -------:|----------:|-----------------:|
+| Bubble Sort   | Θ(n)            | Θ(n^2)  | Θ(n^2)    | Θ(1        )     |
+
+### Swift
+
+**Example:**
+```swift
+func bubbleSort(numbers: [Int]) -> [Int] {
+    var sortedNumbers = numbers
+
+    for i in 0..<sortedNumbers.count {
+        for j in 1..<sortedNumbers.count-i {
+            if sortedNumbers[j - 1] > sortedNumbers[j] {
+                sortedNumbers.swapAt(j - 1, j)
+            }
+        }
+    }
+
+    return sortedNumbers
+}
+
+let numbers = [5, 15, 14, 1, 26, 0, 99]
+print(bubbleSort(numbers: numbers))
+```
+
+#### Output:
+```
+[0, 1, 5, 14, 15, 26, 99]
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/5nfo4ugt/)
+
+```typescript
+function bubbleSort(numbers: number[]): number[] {
+    let sortedNumbers = numbers;
+
+    for (let i = 0; i < sortedNumbers.length; i++) {
+        for (let j = 1; j < sortedNumbers.length; j++) {
+            if (sortedNumbers[j - 1] > sortedNumbers[j]) {
+                const temp = sortedNumbers[j - 1];
+                sortedNumbers[j - 1] = sortedNumbers[j];
+                sortedNumbers[j] = temp;
+            }
+        }
+    }
+
+    return sortedNumbers;
+}
+
+const numbers = [5, 15, 14, 1, 26, 0, 99]
+console.log(bubbleSort(numbers));
+```
+
+#### Output:
+```
+[ 0, 1, 5, 14, 15, 26, 99 ]
+```
+
+</details>
+
+```
+
+#### Output:
+```
+[ 0, 1, 5, 14, 15, 26, 99 ]
+```
+
+</details>
+
+
 # Data Structures
 ## 🔗 Linked List
 
