@@ -16,5 +16,5 @@ function insertionSort(numbers: number[]): number[] {
     return sortedNumbers;
 }
 
-const unsortedArray = [5, 15, 14, 1, 26, 0, 99];
-console.log(insertionSort(unsortedArray));
+const unsortedArrayToSort = [5, 15, 14, 1, 26, 0, 99];
+console.log(insertionSort(unsortedArrayToSort));

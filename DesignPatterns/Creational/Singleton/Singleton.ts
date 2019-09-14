@@ -38,10 +38,10 @@ console.log(instance2.id);
 
 //However, js gives you ability to do next:
 console.log("🤔")
-const test1 = new SingletonPattern.Singleton();
-console.log(test1.id);
-test1.sayHi();
+// const test1 = new SingletonPattern.Singleton();
+// console.log(test1.id);
+// test1.sayHi();
 
-const test2 = new SingletonPattern.Singleton();
-console.log(test2.id);
-test1.sayHi();
+// const test2 = new SingletonPattern.Singleton();
+// console.log(test2.id);
+// test1.sayHi();

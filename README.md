@@ -2320,7 +2320,13 @@ Hi!
 <hr />
 
 # Build/Run/Debug/Test
+
 ## TypeScript
+
+### VS Code
+Hit run from debug toolbar.
+
+### Console
 In order to run/debug typescript examples run `tsc -w` from root of the project. And then run `node filesname.js` to see output in console. Or user jsfiddle link to run in a browser.
 
 ## Swift

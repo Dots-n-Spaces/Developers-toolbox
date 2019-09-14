@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
-        "target": "ES2016"
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "out",
+        "sourceMap": true
     },
     "include": [
         "**/*"
