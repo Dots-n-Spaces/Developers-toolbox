@@ -157,6 +157,164 @@ console.log(insertionSort(unsortedArray));
 
 </details>
 
+## ⚥ Merge Sort
+
+![Merge Sort](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif "Merge Sort")
+
+<details>
+
+Conceptually, a merge sort works as follows:
+
+- Divide the unsorted list into n sublists, each containing one element (a list of one element is considered sorted).
+- Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Merge_sort):
+> Merge sort takes advantage of the ease of merging already sorted lists into a new sorted list. It starts by comparing every two elements (i.e., 1 with 2, then 3 with 4...) and swapping them if the first should come after the second. It then merges each of the resulting lists of two into lists of four, then merges those lists of four, and so on; until at last two lists are merged into the final sorted list. Of the algorithms described here, this is the first that scales well to very large lists, because its worst-case running time is O(n log n). It is also easily applied to lists, not only arrays, as it only requires sequential access, not random access. However, it has additional O(n) space complexity, and involves a large number of copies in simple implementations.
+
+| Algorithm    | Time Complexity |              |             | Space Complexity |
+| ------------ |----------------:| ------------:|------------:|-----------------:|
+|              | Best            | Average      | Worst       | Worst            |
+| Merge Sort   | Θ(n log(n))      | Θ(n log(n)) | O(n log(n)) | O(n)             |
+
+### Swift
+
+**Example:**
+```swift
+func mergeSort(numbers: [Int]) -> [Int] {
+    // If only one element - already sorted.
+    if numbers.count == 1 {
+        return numbers
+    }
+
+    // First, divide the list into equal-sized sublists
+    // consisting of the first half and second half of the list.
+    let iMiddle = numbers.count/2
+    let left = mergeSort(numbers: Array(numbers[0..<iMiddle]))
+    let right = mergeSort(numbers: Array(numbers[iMiddle..<numbers.count]))
+
+    // Recursively sort both sublists.
+    return compareAndMerge(left: left, right: right)
+}
+
+func compareAndMerge(left: [Int], right:[Int]) -> [Int] {
+    var leftIndex = 0
+    var rightIndex = 0
+    var ordered: [Int] = []
+
+    while leftIndex < left.count && rightIndex < right.count {
+        if left[leftIndex] < right[rightIndex] {
+            ordered.append(left[leftIndex])
+            leftIndex += 1
+        } else {
+            ordered.append(right[rightIndex])
+            rightIndex += 1
+        }
+    }
+
+    // Going through leftovers
+    ordered += Array(left[leftIndex..<left.count])
+    ordered += Array(right[rightIndex..<right.count])
+
+    return ordered
+}
+
+var numbers = [5, 15, 14, 1, 26, 0, 99];
+
+print(mergeSort(numbers: numbers))
+```
+
+#### Output:
+```
+[0, 1, 5, 14, 15, 26, 99]
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/2mvhpubk/)
+
+```typescript
+function mergeSort(numbers: number[]): number[] {
+
+    // If only one element - already sorted.
+    if (numbers.length === 1) {
+        return numbers;
+    }
+
+    // First, divide the list into equal-sized sublists
+    // consisting of the first half and second half of the list.
+    const iMiddle = Math.floor(numbers.length/2);
+
+    const leftArray = [];
+    numbers.forEach((el, index) => {
+        if (0 <= index && index < iMiddle) {
+            leftArray.push(el);
+        }
+    });
+
+    const rightArray = [];
+    numbers.forEach((el, index) => {
+        if (iMiddle <= index && index <= numbers.length) {
+            rightArray.push(el);
+        }
+    });
+
+    const left = mergeSort(leftArray);
+    const right = mergeSort(rightArray);
+
+    // Recursively sort both sublists.
+    return compareAndMerge(left, right);
+}
+
+function compareAndMerge(left: number[], right: number[]): number[] {
+    let ordered = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            ordered.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            ordered.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+
+    // Going through leftovers
+    left.forEach((el, index) => {
+        if (leftIndex <= index && index <= left.length) {
+            ordered.push(el);
+        }
+    });
+
+    right.forEach((el, index) => {
+        if (rightIndex <= index && index <= right.length) {
+            ordered.push(el);
+        }
+    });
+
+    return ordered;
+}
+
+const unsortedArrayOfNumbers = [5, 15, 14, 1, 26, 0, 99];
+console.log(mergeSort(unsortedArrayOfNumbers));
+```
+
+#### Output:
+```
+[ 0, 1, 5, 14, 15, 26, 99 ]
+```
+
+</details>
+```
+
+#### Output:
+```
+[ 0, 1, 5, 14, 15, 26, 99 ]
+```
+
+</details>
+
 ## 🔘 Selection Sort
 
 ![Selection Sort](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif "Selection Sort")
