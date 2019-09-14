@@ -218,7 +218,7 @@ func compareAndMerge(left: [Int], right:[Int]) -> [Int] {
     return ordered
 }
 
-var numbers = [5, 15, 14, 1, 26, 0, 99];
+var numbers = [5, 15, 14, 1, 26, 0, 99]
 
 print(mergeSort(numbers: numbers))
 ```
