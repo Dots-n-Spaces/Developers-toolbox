@@ -600,6 +600,7 @@ console.log(selectionSort(unsortedArray));
 
 
 # Data Structures
+
 ## 🔗 Linked List
 
 ![Linked List Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/408px-Singly-linked-list.svg.png "Linked List Data Structure")
@@ -1320,6 +1321,136 @@ console.log(stack.pop());
 2
 1
 Stack is empty
+```
+
+</details>
+
+## 🌳 Tree
+
+![Tree Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/1280px-Binary_tree.svg.png "Tree Data Structure")
+
+<details>
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Tree_(data_structure)):
+> In computer science, a tree is a widely used abstract data type (ADT) - or data structure implementing this ADT - that simulates a hierarchical tree structure, with a root value and subtrees of children with a parent node, represented as a set of linked nodes.
+> A tree data structure can be defined recursively as a collection of nodes (starting at a root node), where each node is a data structure consisting of a value, together with a list of references to nodes (the "children"), with the constraints that no reference is duplicated, and none points to the root.
+
+### Swift
+
+**Example:**
+```swift
+class TreeNode<T> {
+    public var value: T
+    public var parent: TreeNode?
+    public var children = [TreeNode<T>]()
+
+    init(value: T) {
+        self.value = value
+    }
+
+    public func addChild(node: TreeNode<T>) {
+        children.append(node)
+        node.parent = self
+    }
+
+    public func printAll() {
+        print(value)
+
+        children.forEach { node in
+            node.printAll()
+        }
+    }
+}
+
+let tree = TreeNode(value: "root")
+let black = TreeNode(value: "black")
+let red = TreeNode(value: "red")
+let blue = TreeNode(value: "blue")
+let yellow = TreeNode(value: "yellow")
+let white = TreeNode(value: "white")
+let pink = TreeNode(value: "pink")
+
+tree.addChild(node: black)
+tree.addChild(node: blue)
+tree.addChild(node: pink)
+
+black.addChild(node: red)
+black.addChild(node: yellow)
+
+red.addChild(node: white)
+
+tree.printAll()
+```
+
+#### Output:
+```
+root
+black
+red
+white
+yellow
+blue
+pink
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/vcb92gyd/)
+
+```typescript
+class TreeNode<T> {
+    public value: T;
+    public parent: TreeNode<T>;
+    public children: TreeNode<T>[] = [];
+
+    constructor(value: T) {
+        this.value = value;
+    }
+
+    public addChild(node: TreeNode<T>): void {
+        this.children.push(node);
+        node.parent = this;
+    }
+
+    public printAll(): void {
+
+        console.log(this.value);
+
+        for(let i in this.children) {
+            this.children[i].printAll();
+        }
+    }
+}
+
+const tree = new TreeNode("root");
+const black = new TreeNode("black");
+const red = new TreeNode("red");
+const blue = new TreeNode("blue");
+const yellow = new TreeNode("yellow");
+const white = new TreeNode("white");
+const pink = new TreeNode("pink");
+
+tree.addChild(black);
+tree.addChild(blue);
+tree.addChild(pink);
+
+black.addChild(red);
+black.addChild(yellow);
+
+red.addChild(white);
+
+tree.printAll();
+```
+
+#### Output:
+```
+root
+black
+red
+white
+yellow
+blue
+pink
 ```
 
 </details>
