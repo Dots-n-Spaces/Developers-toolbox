@@ -395,6 +395,209 @@ console.log(mergeSort(unsortedArrayOfNumbers));
 
 </details>
 
+## 🏎️ Quick Sort
+
+![Quick Sort](https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif "Quick Sort")
+
+<details>
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Quicksort):
+> Quicksort is a divide and conquer algorithm which relies on a partition operation: to partition an array, an element called a pivot is selected. All elements smaller than the pivot are moved before it and all greater elements are moved after it. This can be done efficiently in linear time and in-place. The lesser and greater sublists are then recursively sorted. This yields average time complexity of O(n log n), with low overhead, and thus this is a popular algorithm. Efficient implementations of quicksort (with in-place partitioning) are typically unstable sorts and somewhat complex, but are among the fastest sorting algorithms in practice.
+> The important caveat about quicksort is that its worst-case performance is O(n2); while this is rare, in naive implementations (choosing the first or last element as pivot) this occurs for sorted data, which is a common case. The most complex issue in quicksort is thus choosing a good pivot element, as consistently poor choices of pivots can result in drastically slower O(n2) performance, but good choice of pivots yields O(n log n) performance, which is asymptotically optimal. For example, if at each step the median is chosen as the pivot then the algorithm works in O(n log n). Finding the median, such as by the median of medians selection algorithm is however an O(n) operation on unsorted lists and therefore exacts significant overhead with sorting. In practice choosing a random pivot almost certainly yields O(n log n) performance.
+
+| Algorithm    | Time Complexity |              |             | Space Complexity |
+| ------------ |----------------:| ------------:|------------:|-----------------:|
+|              | Best            | Average      | Worst       | Worst            |
+| Quick Sort   | Θ(n log(n))      | Θ(n log(n)) | O(n^2)      | O(log(n))        |
+
+There few different parititioning schemes, code below uses Lomuto partition scheme; for Hoare's partitioning scheme, Dutch national flag partitioning take a look [here](https://github.com/raywenderlich/swift-algorithm-club/tree/master/Quicksort).
+
+### Swift
+
+**Example:**
+```swift
+func quickSortLomuto(_ numbers: inout [Int], left: Int, right: Int) -> [Int] {
+    // Recursive, in-place version that uses Lomuto's scheme.
+    if left < right {
+        let p = lomutoPartion(&numbers, left: left, right: right)
+
+        quickSortLomuto(&numbers, left: left, right: p - 1)
+        quickSortLomuto(&numbers, left: p + 1, right: right)
+    }
+
+    return numbers
+}
+
+func lomutoPartion(_ numbers: inout [Int], left: Int, right: Int) -> Int {
+
+    // We use the biggest item as the pivot.
+    let pivotValue = numbers[right]
+
+    // And begin from the smallest left value.
+    var storeIndex = left
+
+    // Partitioning array into four regions:
+    //   [low..i] where values are <= than pivot
+    //   [i+1..j-1] where values are > than pivot
+    //   [j..high-1] values that we haven't looked at yet
+    //   [high] is the pivot.
+    for i in left..<right {
+        if numbers[i] < pivotValue {
+            (numbers[i], numbers[storeIndex]) = (numbers[storeIndex], numbers[i])
+            storeIndex += 1
+        }
+    }
+    (numbers[storeIndex], numbers[right]) = (numbers[right], numbers[storeIndex])
+    return storeIndex
+}
+
+var numbers = [5, 15, 14, 1, 26, 0, 99]
+print(quickSortLomuto(&numbers, left: 0, right: numbers.count-1))
+```
+
+#### Output:
+```
+[0, 1, 5, 14, 15, 26, 99]
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/qwd9smek/)
+
+```typescript
+function quickSortLomuto(numbers: number[], left: number, right: number): number[] {
+
+    // Recursive, in-place version that uses Lomuto's scheme.
+    if (left < right) {
+        let p = lomutoParition(numbers, left, right);
+
+        quickSortLomuto(numbers, left, p - 1);
+        quickSortLomuto(numbers, p + 1, right);
+    }
+
+    return numbers;
+}
+
+function lomutoParition(numbers: number[], left: number, right: number): number {
+
+    // We use the biggest item as the pivot.
+    const pivotValue = numbers[right];
+
+    // And begin from the smallest left value.
+    let storeIndex = left;
+
+    // Partitioning array into four regions:
+    //   [low..i] where values are <= than pivot
+    //   [i+1..j-1] where values are > than pivot
+    //   [j..high-1] values that we haven't looked at yet
+    //   [high] is the pivot.
+    for (let i = left; i < right; i++) {
+        if (numbers[i] < pivotValue) {
+            [numbers[i], numbers[storeIndex]] = [numbers[storeIndex], numbers[i]];
+            storeIndex++;
+        }
+    }
+
+    [numbers[storeIndex], numbers[right]] = [numbers[right], numbers[storeIndex]];
+
+    return storeIndex;
+}
+
+const arrayToSort = [5, 15, 14, 1, 26, 0, 99];
+console.log(quickSortLomuto(arrayToSort, 0, arrayToSort.length - 1));
+```
+
+#### Output:
+```
+[ 0, 1, 5, 14, 15, 26, 99 ]
+```
+
+</details>
+
+## 🔘 Selection Sort
+
+![Selection Sort](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif "Selection Sort")
+
+<details>
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Selection_sort):
+> Selection sort is an in-place comparison sort. It has O(n2) complexity, making it inefficient on large lists, and generally performs worse than the similar insertion sort. Selection sort is noted for its simplicity, and also has performance advantages over more complicated algorithms in certain situations.
+
+> The algorithm finds the minimum value, swaps it with the value in the first position, and repeats these steps for the remainder of the list. It does no more than n swaps, and thus is useful where swapping is very expensive.
+
+| Algorithm      | Time Complexity |         |           | Space Complexity |
+| -------------- |----------------:| -------:|----------:|-----------------:|
+|                | Best            | Average | Worst     | Worst            |
+| Selection sort | Ω(n^2)          | Θ(n^2)  | Θ(n^2)    | Θ(1        )     |
+
+### Swift
+
+**Example:**
+```swift
+func selectionSort(numbers: [Int]) -> [Int] {
+    var sortedNumbers = numbers
+
+    for i in 0..<sortedNumbers.count-1 {
+        var minIndex = i
+        for j in i..<sortedNumbers.count {
+            if sortedNumbers[j] < sortedNumbers[minIndex] {
+                minIndex = j
+            }
+        }
+
+        let temp = sortedNumbers[minIndex]
+        sortedNumbers[minIndex] = sortedNumbers[i]
+        sortedNumbers[i] = temp
+    }
+
+    return sortedNumbers
+}
+
+let numbers = [5, 15, 14, 1, 26, 0, 99]
+
+print(selectionSort(numbers: numbers))
+```
+
+#### Output:
+```
+[0, 1, 5, 14, 15, 26, 99]
+```
+
+### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/oe2cm1fn/)
+
+```typescript
+function selectionSort(numbers: number[]): number[] {
+    let sortedNumbers = numbers;
+
+    for (let i = 0; i < sortedNumbers.length - 1; i++) {
+        let minValueIndex = i;
+
+        for (let j = i + 1; j < sortedNumbers.length; j++) {
+            if (sortedNumbers[j] < sortedNumbers[minValueIndex]) {
+                minValueIndex = j;
+            }
+        }
+            const temp = sortedNumbers[minValueIndex];
+            sortedNumbers[minValueIndex] = sortedNumbers[i];
+            sortedNumbers[i] = temp;
+    }
+
+    return sortedNumbers;
+}
+
+const unsortedArray = [5, 15, 14, 1, 26, 0, 99];
+console.log(selectionSort(unsortedArray));
+```
+
+#### Output:
+```
+[ 0, 1, 5, 14, 15, 26, 99 ]
+```
+
+</details>
+
 
 # Data Structures
 ## 🔗 Linked List
@@ -2340,6 +2543,7 @@ Open playground in Xcode and run it there.
 - https://github.com/nslocum/design-patterns-in-ruby
 - https://github.com/rust-unofficial/patterns
 - https://github.com/tcorral/Design-Patterns-in-Javascript
+- https://github.com/raywenderlich/swift-algorithm-club
 
 ### Resources:
 - https://www.bigocheatsheet.com
