@@ -1327,7 +1327,7 @@ Stack is empty
 
 ## 🌳 Tree
 
-![Tree Data Structure](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/1280px-Binary_tree.svg.png "Tree Data Structure")
+<img width="200" alt="Tree Data Structure" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/1280px-Binary_tree.svg.png">
 
 <details>
 
