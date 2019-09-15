@@ -2647,6 +2647,77 @@ Hi!
 
 </details>
 
+# Problems
+
+## Fibonacci
+
+Print n-th Fibonacci Number.
+
+<details>
+
+[Wikipedia page: Fibonacci number](https://en.wikipedia.org/wiki/Fibonacci_number).
+
+#### Swift
+
+**Example:**
+```swift
+var memory: [Int: Int] = [:]
+
+func fibonacci(number: Int) -> Int {
+
+    if let result = memory[number] {
+        return result
+    }
+
+    let result = number < 2 ? number : fibonacci(number:number - 1) + fibonacci(val:number - 2)
+    memory[number] = result
+
+    return result
+}
+
+print(fibonacci(number: 10))
+
+//1 1 2 3 5 8 13 21 34 55
+```
+
+```
+##### Output:
+```
+55
+```
+
+#### TypeScript
+**Example:**
+[jsfiddle link](https://jsfiddle.net/bewo0anz/)
+
+```typescript
+let memory: number[] = [];
+
+function fibonacci(number: number): number {
+    if (memory[number] != null) {
+        return memory[number];
+    }
+
+    const result = number < 2 ? number :fibonacci(number - 1) + fibonacci(number - 2);
+    memory[number] = result;
+
+    return result;
+}
+
+console.log(fibonacci(10));
+
+//1 1 2 3 5 8 13 21 34 55
+```
+
+##### Output:
+```
+55
+```
+
+</details>
+
+
+
 <hr />
 
 # Build/Run/Debug/Test
