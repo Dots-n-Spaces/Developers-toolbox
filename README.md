@@ -306,14 +306,6 @@ console.log(mergeSort(unsortedArrayOfNumbers));
 ```
 
 </details>
-```
-
-#### Output:
-```
-[ 0, 1, 5, 14, 15, 26, 99 ]
-```
-
-</details>
 
 ## 🔘 Selection Sort
 
