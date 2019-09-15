@@ -2675,6 +2675,7 @@ Open playground in Xcode and run it there.
 - https://github.com/rust-unofficial/patterns
 - https://github.com/tcorral/Design-Patterns-in-Javascript
 - https://github.com/raywenderlich/swift-algorithm-club
+- https://github.com/AvraamMavridis/Algorithms-Data-Structures-in-Typescript
 
 ### Resources:
 - https://www.bigocheatsheet.com
