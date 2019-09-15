@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/Algorithms/Sorting/QuickSort/QuickSort.ts",
+            "program": "${workspaceFolder}/DataStructures/Tree/Tree.ts",
             "preLaunchTask": "tsc: build - tsconfig.json",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
