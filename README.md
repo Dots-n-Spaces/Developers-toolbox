@@ -2987,10 +2987,6 @@ printKthElementFromTheEnd2(list.head, 5); //77
 
 </details>
 
-```
-
-</details>
-
 ## Other
 
 ### Fibonacci
