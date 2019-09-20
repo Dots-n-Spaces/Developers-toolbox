@@ -1192,9 +1192,6 @@ Queue is empty.
 |                    | Access          | Search | Insertion | Deletion | Access | Search  | Insertion | Deletion |                  |
 | Stack              | Θ(n)            | Θ(n)   | Θ(1)      | Θ(1)     | O(n)   | O(n)    | O(1)      | O(1)     | O(n)             |
 
-### Real world example
-> ?
-
 ### Swift
 
 **Example:**
