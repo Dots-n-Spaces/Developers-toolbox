@@ -2612,6 +2612,7 @@ console.log(instance1.id);
 const instance2 = SingletonPattern.Singleton.getInstance();
 console.log(instance2.id);
 ```
+
 ##### Output:
 ```
 Initialized.
@@ -2648,6 +2649,159 @@ Hi!
 </details>
 
 # Problems
+
+## 1. Arrays and Strings
+
+### 1.1 Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
+
+<details>
+
+#### TypeScript
+
+```typescript
+// Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
+
+function checkForIfStringHasUniqChars(string: string): boolean {
+    const values: boolean[] = [];
+    for(let i = 0; i  < string.length; i++) {
+        if (values[string[i]] === true ) {
+            return false;
+        } else {
+            values[string[i]] = true;
+        }
+    }
+
+
+    return true;
+}
+
+console.log(checkForIfStringHasUniqChars("abcd")); // true
+console.log(checkForIfStringHasUniqChars("abcdefg")); // true
+console.log(checkForIfStringHasUniqChars("abcbde")); // false
+console.log(checkForIfStringHasUniqChars("abcdeffg")); // false
+```
+
+</details>
+
+### 1.2 Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+
+<details>
+
+#### TypeScript
+
+```typescript
+// 1.2 Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+
+console.log("Method 1");
+function isAPermutations1(first: string, second: string): boolean {
+    return first.split("").sort().join("") === second.split("").sort().join("");
+}
+
+console.log(isAPermutations1("abcdef", "fedabc")); // true
+console.log(isAPermutations1("abcdef", "abcdef")); // true
+console.log(isAPermutations1("abcdef", "abc")); // false
+console.log(isAPermutations1("abcdef", "abcdefgh")); // false
+console.log(isAPermutations1("def", "abcdefgh")); // false
+
+console.log("Method 2");
+function isAPermutations2(first: string, second: string): boolean {
+    if (first.length !== second.length) {
+        return false;
+    }
+
+    const fistStringArray: number[] = [];
+    first.split("").forEach((el) => {
+        if (fistStringArray[el] !== undefined)  {
+            fistStringArray[el] += 1;
+        } else {
+            fistStringArray[el] = 1;
+        }
+    });
+
+    for (let i = 0; i < second.length; i++) {
+        if (fistStringArray[second[i]] !== undefined && fistStringArray[second[i]] !== 0) {
+            fistStringArray[second[i]] -= 1;
+        } else {
+            return false
+        }
+    }
+
+    return true;
+}
+
+console.log(isAPermutations2("abcdef", "fedabc")); // true
+console.log(isAPermutations2("abcdef", "abcdef")); // true
+console.log(isAPermutations2("abcdef", "abc")); // false
+console.log(isAPermutations2("abcdef", "abcdefgh")); // false
+console.log(isAPermutations2("def", "abcdefgh")); // false
+```
+
+</details>
+
+### 1.3 URLify: Write a method to replace all spaces in a string with '%2e: You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the "true" length of the string. (Note: if implementing in Java, please use a character array so that you can perform this operation in place.
+
+<details>
+
+#### TypeScript
+
+```typescript
+// 1.3 URLify: Write a method to replace all spaces in a string with '%2e: You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the "true" length of the string. (Note: if implementing in Java, please use a character array so that you can perform this operation in place.
+
+function urlify(input: string): string {
+    return input.split("").map((el) => {
+        return el === " " ? "%20" : el;
+    }).join("");
+}
+
+console.log(urlify("Mr John Smith   "));
+console.log(urlify("Mr John Smith"));
+console.log(urlify("MrSmith"));
+console.log(urlify(" Mr.Smith"));
+```
+
+</details>
+
+### 1.4 Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palindrome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
+
+<details>
+
+#### TypeScript
+
+```typescript
+// 1.4 Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palindrome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
+
+function isPermutationOfPolindrom1(phrase: string): boolean {
+    const map: number[] = [];
+
+    phrase.split("").forEach((character) => {
+        const el = character.charCodeAt(0);
+        if (map[el] !== undefined) {
+            map[el] += 1;
+        } else {
+            map[el] = 1;
+        }
+    });
+
+    let polindrom = true;
+    map.forEach((el) => {
+        if (el % 2 != 0) {
+            polindrom = false;
+            return;
+        }
+    });
+
+    return polindrom;
+}
+
+console.log(isPermutationOfPolindrom1("abccba")); // true
+console.log(isPermutationOfPolindrom1("acca")); // true
+console.log(isPermutationOfPolindrom1("abba")); // true
+
+console.log(isPermutationOfPolindrom1("abcba")); // false
+console.log(isPermutationOfPolindrom1("abca")); // false
+```
+
+</details>
 
 ## Fibonacci
 
