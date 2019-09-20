@@ -1,9 +1,9 @@
-class LinkedListNode {
+export class LinkedListNode {
     public value: number;
     public next: LinkedListNode;
 }
 
-class LinkedList {
+export class LinkedList {
     public head: LinkedListNode;
 
     public insert(value: number): void {
