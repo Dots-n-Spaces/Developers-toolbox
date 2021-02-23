@@ -1,5 +1,4 @@
 function quickSortLomuto(numbers: number[], left: number, right: number): number[] {
-
     // Recursive, in-place version that uses Lomuto's scheme.
     if (left < right) {
         let p = lomutoParition(numbers, left, right);
@@ -12,7 +11,6 @@ function quickSortLomuto(numbers: number[], left: number, right: number): number
 }
 
 function lomutoParition(numbers: number[], left: number, right: number): number {
-
     // We use the biggest item as the pivot.
     const pivotValue = numbers[right];
 

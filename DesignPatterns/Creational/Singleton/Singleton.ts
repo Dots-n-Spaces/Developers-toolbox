@@ -8,8 +8,8 @@ namespace SingletonPattern {
 
         // Private initialization to ensure just one instance is created.
         private constructor() {
-	        console.log("Initialized.")
-          this.id = Math.random();
+            console.log("Initialized.");
+            this.id = Math.random();
         }
 
         // This is how we create a singleton object
@@ -24,7 +24,7 @@ namespace SingletonPattern {
         }
 
         public sayHi(): void {
-        	console.log("Hi!");
+            console.log("Hi!");
         }
     }
 }
@@ -37,7 +37,7 @@ const instance2 = SingletonPattern.Singleton.getInstance();
 console.log(instance2.id);
 
 //However, js gives you ability to do next:
-console.log("🤔")
+console.log("🤔");
 // const test1 = new SingletonPattern.Singleton();
 // console.log(test1.id);
 // test1.sayHi();

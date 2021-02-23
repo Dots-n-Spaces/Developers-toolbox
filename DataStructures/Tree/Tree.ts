@@ -13,10 +13,9 @@ class TreeNode<T> {
     }
 
     public printAll(): void {
-
         console.log(this.value);
 
-        for(let i in this.children) {
+        for (let i in this.children) {
             this.children[i].printAll();
         }
     }

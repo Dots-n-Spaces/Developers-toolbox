@@ -7,9 +7,8 @@ class Stack {
 
     public pop(): string {
         if (this.stackArray.length !== 0) {
-            return this.stackArray.splice(this.stackArray.length-1, 1)[0];
-        }
-        else{
+            return this.stackArray.splice(this.stackArray.length - 1, 1)[0];
+        } else {
             return "Stack is empty";
         }
     }

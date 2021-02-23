@@ -5,7 +5,7 @@ function insertionSort(numbers: number[]): number[] {
         let value = sortedNumbers[i];
         let position = i;
 
-        while(position > 0 && sortedNumbers[position - 1] > value) {
+        while (position > 0 && sortedNumbers[position - 1] > value) {
             numbers[position] = numbers[position - 1];
             position -= 1;
         }

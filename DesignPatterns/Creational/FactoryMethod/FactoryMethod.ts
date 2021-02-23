@@ -1,6 +1,9 @@
 enum Country {
     italy = 0,
-    spain, denmark, ukraine, usa
+    spain,
+    denmark,
+    ukraine,
+    usa
 }
 
 interface Currency {
@@ -11,41 +14,41 @@ interface Currency {
 // Defining currencies based on protocol
 class Euro implements Currency {
     public getFlag(): String {
-        return "🇪🇺"
+        return "🇪🇺";
     }
 
     public getSymbol(): String {
-        return "€"
+        return "€";
     }
 }
 
 class Krona implements Currency {
     getFlag(): String {
-        return "🇩🇰"
+        return "🇩🇰";
     }
 
     public getSymbol(): String {
-        return "DKK"
+        return "DKK";
     }
 }
 
 class Hryvnia implements Currency {
     getFlag(): String {
-        return "🇺🇦"
+        return "🇺🇦";
     }
 
     public getSymbol(): String {
-        return "₴"
+        return "₴";
     }
 }
 
 class Dolar implements Currency {
     getFlag(): String {
-        return "🇺🇸"
+        return "🇺🇸";
     }
 
     public getSymbol(): String {
-        return "$"
+        return "$";
     }
 }
 
@@ -53,7 +56,7 @@ class Dolar implements Currency {
 class CurrencyFactory {
     public static make(currencyForCountry: Country): Currency {
         switch (currencyForCountry) {
-            case Country.spain, Country.italy:
+            case (Country.spain, Country.italy):
                 return new Euro();
             case Country.denmark:
                 return new Krona();

@@ -45,7 +45,7 @@ class AuthorizedState implements State {
     private userId: string;
 
     constructor(userId: string) {
-        this.userId = userId
+        this.userId = userId;
     }
 
     public isAuthorized(context: Context): boolean {

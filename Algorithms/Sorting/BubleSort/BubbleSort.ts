@@ -14,5 +14,5 @@ function bubbleSort(numbers: number[]): number[] {
     return sortedNumbers;
 }
 
-const numbers = [5, 15, 14, 1, 26, 0, 99]
+const numbers = [5, 15, 14, 1, 26, 0, 99];
 console.log(bubbleSort(numbers));

@@ -3,7 +3,8 @@
 // LaptopUS can use it.
 // 🇩🇰 socket
 class SocketDenmark {
-    public forbinde(): void { //connect in Danish
+    public forbinde(): void {
+        //connect in Danish
         console.log("Adapee: Forbundet."); // connected in Danish
     }
 }
@@ -43,4 +44,3 @@ class LaptopUS {
 
 LaptopUS.connectUSPlugToElectricity(new SocketUS());
 LaptopUS.connectUSPlugToElectricity(new Adapter(new SocketDenmark()));
-

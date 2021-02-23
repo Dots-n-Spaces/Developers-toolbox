@@ -16,8 +16,7 @@ class Bakery implements BakeryDelegate {
 }
 
 class CookieShop {
-    constructor(private delegate: BakeryDelegate) {
-    }
+    constructor(private delegate: BakeryDelegate) {}
 
     buy(cookies: number): void {
         const cookie = new Cookie();

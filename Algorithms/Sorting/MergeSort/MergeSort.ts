@@ -1,5 +1,4 @@
 function mergeSort(numbers: number[]): number[] {
-
     // If only one element - already sorted.
     if (numbers.length === 1) {
         return numbers;
@@ -7,7 +6,7 @@ function mergeSort(numbers: number[]): number[] {
 
     // First, divide the list into equal-sized sublists
     // consisting of the first half and second half of the list.
-    const iMiddle = Math.floor(numbers.length/2);
+    const iMiddle = Math.floor(numbers.length / 2);
 
     const leftArray = [];
     numbers.forEach((el, index) => {

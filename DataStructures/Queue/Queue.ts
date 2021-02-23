@@ -8,7 +8,7 @@ class Queue {
     public tail: QNode;
 
     public enqueue(value: number): void {
-        console.log(`Enqueing: ${value}`)
+        console.log(`Enqueing: ${value}`);
 
         const node = new QNode();
         node.value = value;

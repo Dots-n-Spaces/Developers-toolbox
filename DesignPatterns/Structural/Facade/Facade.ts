@@ -41,4 +41,3 @@ namespace FacadePattern {
 const facade = new FacadePattern.Facade();
 facade.runBigAndImportantStuff();
 facade.runBigAndDifficultStuff();
-

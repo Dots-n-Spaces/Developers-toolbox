@@ -3,8 +3,7 @@ interface Propulsion {
 }
 
 class Vehicle {
-    constructor(private engine: Propulsion) {
-    }
+    constructor(private engine: Propulsion) {}
 
     forward(): void {
         this.engine.move();
