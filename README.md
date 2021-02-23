@@ -1500,6 +1500,197 @@ pink
 
 </details>
 
+## 🌳🌳 Binary Search Tree
+
+<img width="200" alt="Binary Search Tree Data Structure" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Binary_search_tree.svg/180px-Binary_search_tree.svg.png">
+
+<details>
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Binary_search_tree):
+
+> In computer science, a binary search tree (BST), also called an ordered or sorted binary tree, is a rooted binary tree whose internal nodes each store a key greater than all the keys in the node's left subtree and less than those in its right subtree. A binary tree is a type of data structure for storing data such as numbers in an organized way. Binary search trees allow binary search for fast lookup, addition and removal of data items, and can be used to implement dynamic sets and lookup tables. The order of nodes in a BST means that each comparison skips about half of the remaining tree, so the whole lookup takes time proportional to the binary logarithm of the number of items stored in the tree. This is much better than the linear time required to find items by key in an (unsorted) array, but slower than the corresponding operations on hash tables. Several variants of the binary search tree have been studied.
+
+| Data Structure     | Time Complexity |          |           |          |       |        |           |          |
+| ------------------ | --------------: | -------: | --------: | -------: | ----: | -----: | --------: | -------: |
+|                    |         Average |          |           |          | Worst |        |           |          |
+|                    |           Space |   Search | Insertion | Deletion | Space | Search | Insertion | Deletion |
+| Binary Search Tree |            Θ(n) | Θ(log n) |  Θ(log n) | Θ(log n) |  O(n) |   O(n) |      O(n) |     O(n) |
+
+### Swift
+
+**Example:**
+
+### TypeScript
+
+**Example:**
+[jsfiddle link](https://jsfiddle.net/jw5630hg/)
+
+```typescript
+class TNode {
+    public val: number;
+    public left: TNode;
+    public right: TNode;
+}
+
+class BinarySearchTree {
+    public root: TNode = null;
+
+    public addChild(val: number): void {
+        const newNode = new TNode();
+        newNode.val = val;
+
+        if (this.root == null) {
+            this.root = newNode;
+        } else {
+            let currentNode = this.root;
+            let traversing = true;
+
+            while (traversing) {
+                if (currentNode.val < newNode.val) {
+                    if (currentNode.left == null) {
+                        currentNode.left = newNode;
+                        traversing = false;
+                    } else {
+                        currentNode = currentNode.left;
+                    }
+                } else if (currentNode.val > newNode.val) {
+                    if (currentNode.right == null) {
+                        currentNode.right = newNode;
+                        traversing = false;
+                    } else {
+                        currentNode = currentNode.right;
+                    }
+                }
+            }
+        }
+    }
+
+    public preOrder(): void {
+        console.log("preOrder");
+        if (this.root != null) {
+            let numbers: number[] = [];
+            let currentNode = this.root;
+
+            const traverse = (currentNode: TNode) => {
+                if (currentNode != null) {
+                    numbers.push(currentNode.val);
+                    traverse(currentNode.left);
+                    traverse(currentNode.right);
+                }
+            };
+
+            traverse(this.root);
+
+            console.log(numbers);
+        } else {
+            console.log("Tree is empty");
+        }
+    }
+
+    public inOrder(): void {
+        console.log("inOrder");
+        if (this.root != null) {
+            let numbers: number[] = [];
+            let currentNode = this.root;
+
+            const traverse = (currentNode: TNode) => {
+                if (currentNode != null) {
+                    traverse(currentNode.left);
+                    numbers.push(currentNode.val);
+                    traverse(currentNode.right);
+                }
+            };
+
+            traverse(this.root);
+
+            console.log(numbers);
+        } else {
+            console.log("Tree is empty");
+        }
+    }
+
+    public postOrder(): void {
+        console.log("postOrder");
+        if (this.root != null) {
+            let numbers: number[] = [];
+            let currentNode = this.root;
+
+            const traverse = (currentNode: TNode) => {
+                if (currentNode != null) {
+                    traverse(currentNode.left);
+                    traverse(currentNode.right);
+                    numbers.push(currentNode.val);
+                }
+            };
+
+            traverse(this.root);
+
+            console.log(numbers);
+        } else {
+            console.log("Tree is empty");
+        }
+    }
+
+    public breadthFirstSearchTraversal(): void {
+        console.log("breadthFirstSearchTraversal");
+        if (this.root != null) {
+            let numbers: number[] = [];
+            let qOfNextItems = [this.root];
+
+            while (qOfNextItems.length !== 0) {
+                const currentNode = qOfNextItems[0];
+
+                numbers.push(currentNode.val);
+
+                if (currentNode.left != null) {
+                    qOfNextItems.push(currentNode.left);
+                }
+                if (currentNode.right != null) {
+                    qOfNextItems.push(currentNode.right);
+                }
+
+                qOfNextItems.splice(0, 1);
+            }
+
+            console.log(numbers);
+        } else {
+            console.log("Tree is empty");
+        }
+    }
+}
+
+const bst = new BinarySearchTree();
+bst.addChild(10);
+bst.addChild(3);
+bst.addChild(0);
+bst.addChild(8);
+bst.addChild(6);
+bst.addChild(15);
+bst.addChild(11);
+bst.addChild(20);
+
+bst.preOrder();
+bst.inOrder();
+bst.postOrder();
+
+bst.breadthFirstSearchTraversal();
+```
+
+#### Output:
+
+```
+"preOrder"
+[10, 15, 20, 11, 3, 8, 6, 0]
+"inOrder"
+[20, 15, 11, 10, 8, 6, 3, 0]
+"postOrder"
+[20, 11, 15, 6, 8, 0, 3, 10]
+"breadthFirstSearchTraversal"
+[10, 15, 3, 20, 11, 8, 0, 6]
+```
+
+</details>
+
 # Design patterns
 
 ## Behaviour
