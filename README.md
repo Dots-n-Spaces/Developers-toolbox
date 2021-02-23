@@ -1516,10 +1516,6 @@ pink
 |                    |           Space |   Search | Insertion | Deletion | Space | Search | Insertion | Deletion |
 | Binary Search Tree |            Θ(n) | Θ(log n) |  Θ(log n) | Θ(log n) |  O(n) |   O(n) |      O(n) |     O(n) |
 
-### Swift
-
-**Example:**
-
 ### TypeScript
 
 **Example:**
