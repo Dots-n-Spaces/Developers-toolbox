@@ -1687,6 +1687,164 @@ bst.breadthFirstSearchTraversal();
 
 </details>
 
+## 🔺 Min Heap Data Structure
+
+<img width="200" alt="Min Heap Data Structure" src="https://miro.medium.com/max/220/0*7Auark0SNQvtKt6O.png">
+
+<details>
+
+[Wikipedia says](https://en.wikipedia.org/wiki/Heap_(data_structure)):
+
+> In computer science, a heap is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the heap property: in a max heap, for any given node C, if P is a parent node of C, then the key (the value) of P is greater than or equal to the key of C. In a min heap, the key of P is less than or equal to the key of C. The node at the “top” of the heap (with no parents) is called the root node.
+The heap is one maximally efficient implementation of an abstract data type called a priority queue, and in fact, priority queues are often referred to as “heaps”, regardless of how they may be implemented. In a heap, the highest (or lowest) priority element is always stored at the root. However, a heap is not a sorted structure; it can be regarded as being partially ordered. A heap is a useful data structure when it is necessary to repeatedly remove the object with the highest (or lowest) priority.
+A common implementation of a heap is the binary heap, in which the tree is a binary tree. The heap data structure, specifically the binary heap, was introduced by J. W. J. Williams in 1964, as a data structure for the heapsort sorting algorithm. Heaps are also crucial in several efficient graph algorithms such as Dijkstra’s algorithm. When a heap is a complete binary tree, it has a smallest possible height — a heap with N nodes and for each node a branches always has loga N height.
+
+| Data Structure     | Time Complexity |          |           |          |
+| ------------------ | --------------: | -------: | --------: | -------: |
+|                    |         Average |          |           |          |
+|                    |           Space |   Search | Insertion | Deletion |
+| Min Heap (Binary)  |            Θ(n) | Θ(log n) |  Θ(log n) | Θ(log n) |
+
+### TypeScript
+
+**Example:**
+[jsfiddle link](https://jsfiddle.net/jszbp2qw/)
+
+```typescript
+class BinaryMinHeap {
+    public values: number[] = [];
+
+    public insert(val: number): void {
+        if (this.values.length === 0) {
+            this.values[0] = val;
+        } else {
+            this.values.push(val);
+            this.bubbleUp();
+        }
+    }
+
+    private bubbleUp(): void {
+        let index = this.values.length - 1;
+
+        let parentIndex = Math.floor((index - 1) / 2);
+        let temp;
+
+        // Keep looping until the parent node is less than the child node
+        while (parentIndex >= 0 && this.values[parentIndex] > this.values[index]) {
+            temp = this.values[index];
+            this.values[index] = this.values[parentIndex];
+            this.values[parentIndex] = temp;
+
+            index = parentIndex;
+            parentIndex = Math.floor((index - 1) / 2);
+        }
+    }
+
+    public extractMin(): number {
+        if (this.values.length != 0) {
+            const min = this.values[0];
+            const end = this.values[this.values.length - 1];
+            this.values.splice(this.values.length - 1, 1);
+
+            if (this.values.length > 0) {
+                this.values[0] = end;
+                this.sinkDown();
+            }
+
+            return min;
+        } else {
+            return 0;
+        }
+    }
+
+    private sinkDown(): void {
+        let parentIdx = 0;
+        let leftChildIdx = 0;
+        let rightChildIdx = 0;
+        let heapLength = this.values.length;
+
+        let nodeToSink = this.values[parentIdx];
+        let idxToSwap = 0;
+        let swap = false;
+        // Keep looping through the nodes util you find the right spot
+        while (true) {
+            leftChildIdx = 2 * parentIdx + 1;
+            rightChildIdx = 2 * parentIdx + 2;
+
+            swap = false;
+            let leftChild = null;
+            let rightChild = null;
+
+            // Check with the left child only if it is a valid index
+            if (leftChildIdx < heapLength) {
+                leftChild = this.values[leftChildIdx];
+                // Compare with the node to sink down
+                if (nodeToSink > leftChild) {
+                    idxToSwap = leftChildIdx;
+                    swap = true;
+                }
+            }
+
+            // Check with the right child only if it is a valid index
+            if (rightChildIdx < heapLength) {
+                rightChild = this.values[rightChildIdx];
+
+                if ((swap && leftChild > rightChild) || (!swap && nodeToSink > rightChild)) {
+                    idxToSwap = rightChildIdx;
+                    swap = true;
+                }
+            }
+
+            if (!swap) {
+                // If there is no swap required, we found the correct spot for the element
+                return;
+            } else {
+                // Swap the elements
+                this.values[parentIdx] = this.values[idxToSwap];
+                this.values[idxToSwap] = nodeToSink;
+
+                // Set the reference to index to its new value
+                parentIdx = idxToSwap;
+            }
+        }
+    }
+
+    public printAll(): void {
+        console.log(this.values);
+    }
+}
+
+const mbh = new BinaryMinHeap();
+mbh.insert(2);
+mbh.insert(7);
+mbh.insert(1);
+mbh.insert(0);
+mbh.insert(12);
+mbh.insert(20);
+mbh.insert(25);
+mbh.insert(5);
+mbh.insert(4);
+
+mbh.printAll();
+
+console.log(mbh.extractMin());
+console.log(mbh.extractMin());
+console.log(mbh.extractMin());
+mbh.printAll();
+```
+
+#### Output:
+
+```
+[0, 1, 2, 4, 12, 20, 25, 7, 5]
+0
+1
+2
+[4, 5, 7, 25, 12, 20]
+```
+
+</details>
+
 # Design patterns
 
 ## Behaviour
